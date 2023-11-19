@@ -1,0 +1,15 @@
+header a:hover {
+    background-image: linear-gradient(to right, #0094C6,#0187b4);
+    color: white;
+}
+
+menu p:hover {
+    background-color: #0094C6;
+    border-radius: 5px;
+    padding: 10px;
+    color: white;
+}
+
+div.post .img img:hover {
+    transform: scale(1.03);
+}
