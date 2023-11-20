@@ -1,0 +1,25 @@
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    background-color: #2d2e39;
+    user-select: none;
+}
+
+footer p {
+    color: white;
+}
+
+footer i {
+    font-size: 1.5em;
+    color: white;
+    cursor: pointer;
+    transition: 0.5s all ease;
+}
+
+footer i:hover {
+    font-size: 1.5em;
+    color: #19C37D;
+}

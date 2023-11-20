@@ -1,0 +1,35 @@
+/*Login and Cadastro*/
+.form form input:hover {
+    border-bottom: 2px solid #19C37D;
+}
+
+.form form a:hover {
+    color: #19C37D;
+    transition: color 0.3s ease;
+}
+
+.form form input#submit:hover {
+    color: white;
+    background-color: #333333;
+}
+
+@keyframes flutuar {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-2px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+}

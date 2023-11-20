@@ -1,0 +1,12 @@
+header a:hover {
+    background-color: aliceblue;
+    color: black;
+}
+
+article div.post .img img:hover {
+    transform: scale(1.02);
+}
+
+a#share:hover {
+    color: #19C37D;
+}

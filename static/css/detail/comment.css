@@ -1,0 +1,41 @@
+div.comentario {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+    padding: 20px;
+    border: 1px solid grey;
+    background-color: #2d2e39;
+}
+
+div.comentario p#comentarios {
+    font-weight: 600;
+    color: white;
+    user-select: none;
+}
+
+div.comentario div#comentario {
+    display: flex;
+    gap: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid gray;
+}
+
+div.comentario div#comentario div#perfil img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    object-position: center;
+}
+
+div.comentario div#comentario div#descricao {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: white;
+}
+
+div.comentario div#comentario div#descricao p {
+    font-weight: 300;
+}

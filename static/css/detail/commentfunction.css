@@ -1,0 +1,55 @@
+div#comentar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    border: 1px solid grey;
+}
+
+div#comentar p {
+    font-weight: 500;
+    color: white;
+    user-select: none;
+}
+
+div#comentar form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+div#comentar form input {
+    transition: 0.3s all ease;
+}
+
+div#comentar form input:hover {
+    border-color: #19C37D;
+}
+
+input#comentario {
+    border: none;
+    outline: none;
+    padding: 5px;
+    color: white;
+    border-bottom: 1px solid grey;
+    background-color: transparent;
+}
+
+input#comentario::placeholder {
+    color: rgb(102, 102, 102);
+}
+
+input#submit {
+    outline: none;
+    padding: 5px;
+    font-weight: 600;
+    font-size: 1em;
+    color: white;
+    background-color: #19C37D;
+    border: none;
+}
+
+input#submit:hover {
+    background-color: #0094C6;
+}

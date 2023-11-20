@@ -1,15 +1,38 @@
+/*REFATORADO*/
 header a:hover {
-    background-image: linear-gradient(to right, #0094C6,#0187b4);
-    color: white;
+    color: #2d2e39;
+    background-color: aliceblue;
 }
 
 menu p:hover {
-    background-color: #0094C6;
     border-radius: 5px;
     padding: 10px;
     color: white;
+    background-color: #0094C6;
 }
 
 div.post .img img:hover {
-    transform: scale(1.03);
+    transform: scale(1.02);
+}
+
+div.post .tag:hover {
+    color: #19C37D;
+}
+
+div.post .title:hover {
+    color: #19C37D;
+    transform: scale(1.005);
+}
+
+.footer .form form input:hover {
+    border-bottom: 1px solid #19C37D;
+}
+
+.footer .form form input#submit:hover {
+    background-color: #0094C6;
+}
+
+.icons i:hover {
+    color: #19C37D;
+    cursor: pointer;
 }
