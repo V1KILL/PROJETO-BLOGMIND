@@ -1,0 +1,20 @@
+{% for post in posts %}
+<div class="post">
+    <div class="img">
+        <img src="{{post.image}}" alt="">
+    </div>
+    <div class="resources">
+        <div class="tags">
+            <p class="tag">#celularpreto</p>
+            <p class="tag">#barato</p>
+        </div>
+        <p class="data">{{post.created}}</p>
+    </div>
+    <p class="title">{{post.title}}</p>
+    
+    <div class="perfil-post">
+        <img src="{{post.user.profile_image.url}}" alt="">
+        <p class="perfil-name-post">{{post.user}}</p>
+    </div>
+</div>
+{% endfor %}

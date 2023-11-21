@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+
+
+{% block title %}  Bem Vindo, Victor! {% endblock %}
+
+{% block content %}
+<section>
+    {% include 'blog/menu.html' %}
+    <article>
+    
+        {% include 'blog/post.html' %}
+        
+    </article>
+</section>
+{% endblock %}

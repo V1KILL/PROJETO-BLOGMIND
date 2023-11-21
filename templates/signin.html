@@ -12,8 +12,8 @@
     <section id="CandLogin">
         <div class="form">
             <h1>Sign In</h1>
-            <form action="{% url 'signin' %}" method="POST">
-                
+            <form action="{% url 'login' %}" method="POST">
+                {% csrf_token %}
                 <input type="text" name="username" placeholder="UserName" required minlength="8">
                 <input type="password" name="password" id="" placeholder="PassWord" required minlength="8">
                 

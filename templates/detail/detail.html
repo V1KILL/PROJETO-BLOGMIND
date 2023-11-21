@@ -1,0 +1,13 @@
+{% extends 'detail/base.html' %}
+
+{% block title %} Celular Barato {% endblock %}
+
+{% block content %}
+<section>
+    <article>
+        {% include 'detail/post.html' %}
+    </article>
+    {% include 'detail/comentario.html' %}
+    {% include 'detail/comentar.html' %}
+</section>
+{% endblock %}
