@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User, auth
 from django.contrib.auth import logout
 from django.contrib import messages
-from .models import Post
+from .models import Post, UserProfile
 
 def ViewLogin(request):
     if request.method == 'POST':
@@ -34,10 +34,12 @@ def ViewLogout(request):
 
 @login_required(login_url='login')
 def ViewHome(request):
-    user = request.user 
-    posts = Post.objects.all()
+    user = request.user
+    user_profile = UserProfile.objects.get(user=user)
 
-    return render(request, 'blog/home.html', {'posts':posts})
+    post = Post.objects.get(user=user)
+
+    return render(request, 'blog/home.html', {'user_profile': user_profile, 'post':post})
 
 @login_required(login_url='login')
 def ViewDetail(request):
