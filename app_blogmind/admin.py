@@ -9,6 +9,9 @@ class CustomUserAdmin(admin.ModelAdmin):
 
 # Registrando o modelo Post
 admin.site.register(UserProfile)
-admin.site.register(Post)
+
+@admin.register(Post)
+class PostAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('title',)}
 
 

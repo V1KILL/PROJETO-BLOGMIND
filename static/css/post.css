@@ -11,10 +11,16 @@ div.post {
     border-radius: 5px;
     border: 1px solid rgba(128, 128, 128, 0.497);
     background-color: rgb(50, 53, 63);
-    
+    z-index: 0;
 }
 
-div.post .img {
+div.post a {
+    text-decoration: none;
+    color: white;
+}
+
+div.post div.img {
+    width: 300px;
     height: 300px;
 }
 

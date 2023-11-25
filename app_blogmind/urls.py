@@ -8,7 +8,7 @@ urlpatterns = [
     path('register', ViewRegister, name='register'),
     path('logout', ViewLogout, name='logout'),
     path('home', ViewHome, name='home'),
-    path('detail', ViewDetail, name='detail'),
+    path('detail/<int:year>/<int:month>/<int:day>/<str:slug>', ViewDetail, name='detail'),
 ]
 
 if settings.DEBUG:

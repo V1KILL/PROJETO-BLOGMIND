@@ -35,12 +35,19 @@ def ViewLogout(request):
 @login_required(login_url='login')
 def ViewHome(request):
     user = request.user
-    user_profile = UserProfile.objects.get(user=user)
+    """user_profile = UserProfile.objects.get(user=user)"""
 
-    post = Post.objects.get(user=user)
+    """post = Post.objects.get(user=user)"""
+    
+    posts = Post.objects.all()
 
-    return render(request, 'blog/home.html', {'user_profile': user_profile, 'post':post})
+    
+
+    return render(request, 'blog/home.html', {'posts':posts})
 
 @login_required(login_url='login')
-def ViewDetail(request):
-    return render(request, 'detail/detail.html')
+def ViewDetail(request, year, month, day, slug):
+
+    post = Post.objects.get(created__year=year, created__month=month, created__day=day, slug=slug)
+
+    return render(request, 'detail/detail.html', {'post':post})

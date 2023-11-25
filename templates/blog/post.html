@@ -1,6 +1,5 @@
 
-
-
+{% for post in posts %}
     <div class="post">
         <div class="img">
             <img src="{{post.image.url}}" alt="">
@@ -12,11 +11,10 @@
             </div>
             <p class="data">{{post.data}}</p>
         </div>
-        <p class="title">{{post.title}}</p>
-            
+        <a href="{{post.get_absolute_url}}" class="title">{{post.title}}</a>
         <div class="perfil-post">
-            <img src="{{user_profile.profileimg.url}}" alt="">
+            <img src="{{post.user.profileimg.url}}" alt="">
             <p class="perfil-name-post">{{post.user}}</p>
         </div>
     </div>
-
+{% endfor %}
