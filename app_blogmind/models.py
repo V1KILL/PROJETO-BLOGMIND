@@ -5,6 +5,15 @@ from django.urls import reverse
 
 User = get_user_model()
 
+class Comment(models.Model):
+    post = models.ForeignKey('Post', on_delete=models.CASCADE, related_name='comments')
+    user = models.ForeignKey('UserProfile', on_delete=models.CASCADE)
+    text = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'Comentado por {self.user}'
+
 class UserProfile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     profileimg = models.ImageField(upload_to='profile_images/', default='profile-1.jpg')
@@ -15,15 +24,18 @@ class UserProfile(models.Model):
 class Post(models.Model):
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     title = models.CharField(max_length=250)
-    description = models.TextField()
-    created = models.DateTimeField(auto_now_add=True)
-    modified = models.DateTimeField(auto_now=True)
     image = models.ImageField(upload_to='profile_images/')
+    description = models.TextField()
+    modified = models.DateTimeField(auto_now=True)
+    created = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(max_length=250, unique_for_date='created')
     
 
     def __str__(self):
         return self.title
+
+    def formatted_date(self):
+        return self.created.strftime("%d, %B, %Y")
     
     def get_absolute_url(self):
         return reverse('detail', args=[self.created.year, self.created.month, self.created.day, self.slug])

@@ -20,16 +20,17 @@ div.post a {
 }
 
 div.post div.img {
-    width: 300px;
+    display: flex;
     height: 300px;
 }
 
 div.post img {
+    display: flex;
     border-radius: 10px;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
+    object-position: center center;
     transition: 0.3s all ease;
     
 }

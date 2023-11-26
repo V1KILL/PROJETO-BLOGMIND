@@ -1,13 +1,15 @@
 <a id="share">Compartilhar o Post</a>
 <div class="comentario">
-    <p id="comentarios">Comentários (1)</p>
+    <p id="comentarios">Comentários ({{comments.count}})</p>
+    {% for comment in comments %}
     <div id="comentario">
         <div id="perfil">
-            <img src="" alt="">         
+            <img src="{{comment.user.profileimg.url}}" alt="">         
         </div>
         <div id="descricao">
-            <h4>Victor Amaral Mendonça</h5>
-            <p>Este Celular Atendeu Minhas Necessidades Do Dia a Dia</p>
+            <h4>{{comment.user}}</h5>
+            <p>{{comment.text}}</p>
         </div>
     </div>
+    {% endfor %}
 </div>

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, UserProfile
+from .models import Post, UserProfile, Comment
 """@admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     raw_id_fields = ['user.id']
@@ -9,6 +9,7 @@ class CustomUserAdmin(admin.ModelAdmin):
 
 # Registrando o modelo Post
 admin.site.register(UserProfile)
+admin.site.register(Comment)
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
