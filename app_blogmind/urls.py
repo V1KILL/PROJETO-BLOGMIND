@@ -1,12 +1,14 @@
 
 from django.urls import path
-from .views import ViewHome, ViewDetail, ViewLogin, ViewRegister, ViewLogout
+from .views import ViewHome, ViewDetail, ViewLogin, ViewRegister, ViewLogout, ViewAccount, ViewProfile
 from django.conf.urls.static import static
 from django.conf import settings
 urlpatterns = [
     path('login', ViewLogin, name='login'),
     path('register', ViewRegister, name='register'),
     path('logout', ViewLogout, name='logout'),
+    path('account', ViewAccount, name='account'),
+    path('profile/<int:id>', ViewProfile, name='profile'),
     path('home', ViewHome, name='home'),
     path('detail/<int:year>/<int:month>/<int:day>/<str:slug>', ViewDetail, name='detail'),
 ]

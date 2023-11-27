@@ -30,7 +30,7 @@ div.post img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center center;
+    object-position: center;
     transition: 0.3s all ease;
     
 }

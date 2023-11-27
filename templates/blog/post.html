@@ -14,7 +14,7 @@
         <a href="{{post.get_absolute_url}}" class="title">{{post.title}}</a>
         <div class="perfil-post">
             <img src="{{post.user.profileimg.url}}" alt="">
-            <p class="perfil-name-post">{{post.user}}</p>
+            <a href="{% url 'profile' post.user.id %}" class="perfil-name-post">{{post.user}}</a>
         </div>
     </div>
 {% endfor %}

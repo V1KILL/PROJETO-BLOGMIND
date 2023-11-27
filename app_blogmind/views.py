@@ -33,6 +33,18 @@ def ViewLogout(request):
     return redirect('login')
 
 @login_required(login_url='login')
+def ViewAccount(request):
+    user = UserProfile.objects.get(user=request.user)
+
+    return render(request, 'account/account.html', {'user':user})
+
+def ViewProfile(request, id):
+    user = UserProfile.objects.get(user=id)
+
+    posts = Post.objects.filter(user=user)
+    return render(request, 'profile/profile.html',{'user':user, 'posts':posts})
+
+@login_required(login_url='login')
 def ViewHome(request):
     posts = Post.objects.all()
     return render(request, 'blog/home.html', {'posts':posts})
