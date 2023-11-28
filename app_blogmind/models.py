@@ -16,6 +16,8 @@ class Comment(models.Model):
 
 class UserProfile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    
+
     profileimg = models.ImageField(upload_to='profile_images/', default='profile-1.jpg')
     background = models.ImageField(upload_to='profile_images/', default='profile-1.jpg')
 

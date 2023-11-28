@@ -4,6 +4,7 @@ from django.contrib.auth.models import User, auth
 from django.contrib.auth import logout
 from django.contrib import messages
 from .models import Post, UserProfile
+from django.shortcuts import get_object_or_404
 
 def ViewLogin(request):
     if request.method == 'POST':
@@ -25,7 +26,29 @@ def ViewLogin(request):
     return render(request, 'signin.html')
 
 def ViewRegister(request):
-    return render(request, 'signup.html')
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        password2 = request.POST['password2']
+
+        if password == password2:
+            if User.objects.filter(username=username).exists():
+                messages.info(request, 'Nome Existente')
+                return redirect('register')
+            else:
+                user = User.objects.create_user(username=username, password=password)
+                user.save()
+                UserProfile.objects.create(user=user)
+
+                messages.info(request, 'Conta Criada com Sucesso')
+
+
+                return redirect('login')
+        else:
+            messages.info(request, 'Senhas não coincidem')
+            return redirect('register')
+    else:
+        return render(request, 'signup.html')
 
 @login_required(login_url='login')
 def ViewLogout(request):
@@ -47,6 +70,8 @@ def ViewProfile(request, id):
 @login_required(login_url='login')
 def ViewHome(request):
     posts = Post.objects.all()
+    
+                                   
     return render(request, 'blog/home.html', {'posts':posts})
 
 @login_required(login_url='login')

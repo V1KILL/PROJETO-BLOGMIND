@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,55 +10,22 @@
     <link rel="stylesheet" href="/static/css/profile/profile.css">
     <link rel="stylesheet" href="/static/css/blog/hover.css">
     <link rel="stylesheet" href="/static/css/detail/footer.css">
+    <link rel="stylesheet" href="/static/css/menu.css">
+   
     
 </head>
 <body>
     <div class="container">
-        <header id="header">
-            <p>Blog<span>Mind</span></p>
-            <a href="">Logout</a>
-        </header>
-        <div class="banner">
-            <img src="{{user.background.url}}" alt="">
-        </div>
-        <div class="perfil">
-            <div id="foto-perfil">
-                <img src="{{user.profileimg.url}}" alt="">
-            </div>
-            <div id="text-perfil">
-                <h2>{{user}}</h2> 
-                <h5>Artigos ({{posts.count}})</h5>
-            </div>
-        </div>
-        <article>
-            {% for post in posts %}
-            <div class="post">
-                <div class="img">
-                    <img src="{{post.image.url}}" alt="">
-                </div>
-                <div class="resources">
-                    <div class="tags">
-                        <p class="tag">#learnenglish</p>
-                        <p class="tag">#english</p>
-                    </div>
-                    <p class="data">22, Feb, 2023</p>
-                </div>
-                <a href="{{post.get_absolute_url}}" class="title">{{post.title}}</a>
-                <div class="perfil-post">
-                    <img src="{{user.profileimg.url}}" alt="">
-                    <p class="perfil-name-post">{{post.user}}</p>
-                </div>
-            </div>
-            {% endfor %}
-        </article>
-        <footer>     
-            <p>©Victor Amaral || All Right Reserved</p>
-            <i class="fa-brands fa-github"></i>
-            <i class="fa-brands fa-linkedin"></i>
-            <i class="fa-brands fa-instagram"></i>        
-        </footer>
-    </div>
+        {% include 'blog/header.html' %}
 
+        {% include 'profile/perfil.html' %}
+
+        {% include 'profile/post.html' %}
+        
+        {% include 'detail/footer.html' %}
+        
+        {% include 'menu.html' %}
+    </div>
     <script src="/static/js/script.js"></script>
     <script src="https://kit.fontawesome.com/c99caadda1.js" crossorigin="anonymous"></script>
 </body>

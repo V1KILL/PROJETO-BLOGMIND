@@ -1,5 +1,5 @@
-
-{% for post in posts %}
+<article>
+    {% for post in posts %}
     <div class="post">
         <div class="img">
             <img src="{{post.image.url}}" alt="">
@@ -9,12 +9,13 @@
                 <p class="tag">#learnenglish</p>
                 <p class="tag">#english</p>
             </div>
-            <p class="data">{{post.formatted_date}}</p>
+            <p class="data">22, Feb, 2023</p>
         </div>
         <a href="{{post.get_absolute_url}}" class="title">{{post.title}}</a>
         <div class="perfil-post">
-            <img src="{{post.user.profileimg.url}}" alt="">
-            <a href="{% url 'profile' post.user.user.id %}" class="perfil-name-post">{{post.user}}</a>
+            <img src="{{user.profileimg.url}}" alt="">
+            <p class="perfil-name-post">{{post.user}}</p>
         </div>
     </div>
-{% endfor %}
+    {% endfor %}
+</article>

@@ -1,0 +1,16 @@
+<div class="menumobile">
+    <a href="{% url 'home' %}">
+        <i class="fa-sharp fa-solid fa-house"></i>
+    </a>
+    
+    <a href="{% url 'profile' request.user.id %}">
+        <i class="fa-sharp fa-solid fa-user"></i>
+    </a>
+    
+    <a href="">
+        <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+    </a>
+    <a href="">
+        <i class="fa-sharp fa-solid fa-gear"></i>
+    </a>
+</div>
