@@ -10,18 +10,18 @@
     <link rel="stylesheet" href="{% static 'css/detail/comment.css' %}">
     <link rel="stylesheet" href="{% static 'css/detail/commentfunction.css' %}">
     <link rel="stylesheet" href="{% static 'css/detail/hover.css' %}">
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}">
     
 </head>
 <body>
     <div class="container">
-        {% include 'detail/header.html' %}
-        
-        
+        {% include 'blog/header.html' %}
+        <p id="titulo">{{post.title}}</p>
         {% block content %}
         
         {% endblock %}
 
-        {% include 'detail/footer.html' %}
+        {% include 'menu.html' %}
     </div>
     <script src="https://kit.fontawesome.com/c99caadda1.js" crossorigin="anonymous"></script>
     <script src="../static/js/script.js"></script>

@@ -80,3 +80,6 @@ def ViewDetail(request, year, month, day, slug):
     comments = post.comments.all()
 
     return render(request, 'detail/detail.html', {'post':post, 'comments':comments})
+
+def ViewPost(request):
+    return render(request, 'postar.html')

@@ -7,15 +7,12 @@
         <div class="resources">
             <div class="tags">
                 <p class="tag">#learnenglish</p>
-                <p class="tag">#english</p>
+                
             </div>
-            <p class="data">22, Feb, 2023</p>
+            <p class="data">{{post.formatted_date}}</p>
         </div>
         <a href="{{post.get_absolute_url}}" class="title">{{post.title}}</a>
-        <div class="perfil-post">
-            <img src="{{user.profileimg.url}}" alt="">
-            <p class="perfil-name-post">{{post.user}}</p>
-        </div>
+
     </div>
     {% endfor %}
 </article>
