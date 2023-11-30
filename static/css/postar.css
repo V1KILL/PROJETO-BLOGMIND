@@ -1,0 +1,52 @@
+
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+div.container {
+    gap: 50px;
+    padding: 20px;
+}
+
+div.add_post {
+    display: flex;
+    justify-content:center;
+    flex-direction: column;
+    gap: 20px;
+    color: white;
+}
+
+div.add_post form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+div.add_post form input#submit {
+   outline: none;
+   border: none;
+   padding: 10px;
+   background-color: #19C37D;
+   color: white;
+   transition: 0.3s ease;
+   font-size: 1.1em;
+   font-weight: 600;
+}
+
+div.add_post form input#submit:hover {
+    background-color: #0094C6;
+}
+
+div.add_post form input#title {
+   outline: none;
+   border: none;
+   padding: 10px;
+}
+
+div.add_post form textarea{
+   outline: none;
+   border: none;
+   padding: 10px;
+}

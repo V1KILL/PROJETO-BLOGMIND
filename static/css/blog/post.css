@@ -12,6 +12,8 @@ div.post {
     border: 1px solid rgba(128, 128, 128, 0.497);
     background-color: rgb(50, 53, 63);
     z-index: 0;
+    word-wrap: break-word;
+    
 }
 
 div.post a {

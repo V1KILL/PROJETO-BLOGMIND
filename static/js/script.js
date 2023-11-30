@@ -10,3 +10,34 @@ window.onscroll = function() {
         header.style.backgroundColor = "transparent";
   }
 };
+
+
+
+document.getElementById("title").addEventListener("input", updatePreview);
+
+document.getElementById("descricao").addEventListener("input", updatePreview);
+
+function updatePreview() {
+      const title = document.getElementById("title").value;
+      
+      const description = document.getElementById("descricao").value;
+
+      document.getElementById("preview-title").textContent = title;
+      
+      document.getElementById("preview-descricao").textContent = description;
+}
+
+const input = document.querySelector('#image');
+input.addEventListener('change', function(e) {
+      const tgt = e.target || window.event.srcElement;
+
+      const files = tgt.files;
+
+      const fr = new FileReader();
+      fr.onload = function () {
+            document.querySelector("#preview-image").src = fr.result;
+      }
+
+      fr.readAsDataURL(files[0]);
+      
+})

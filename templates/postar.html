@@ -5,8 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/static/css/postar.css">
+    <link rel="stylesheet" href="/static/css/blog/post.css">
+    <link rel="stylesheet" href="/static/css/blog/home.css">
 </head>
-<body>
-    
+<body> 
+    <div class="container">
+        <div class="add_post">
+            <form action="{% url 'postar' %}" enctype="multipart/form-data" method="POST">
+                <h3>Adicionar Uma Imagem</h3>
+                <input type="file" name="" id="image">
+                <h3>Título do Post</h3>
+                <input type="text" name="" id="title" autocomplete="off">
+                <h3>Descrição</h3>
+                <textarea name="" id="descricao" cols="30" rows="10"></textarea>
+                <input type="submit" value="Adicionar Post" id="submit">
+            </form>
+        </div>
+        <div class="post">
+            <div class="img">
+                <img src="" alt="" id="preview-image">
+            </div>
+            <a href="" class="title" id="preview-title"></a>
+            <p id="preview-descricao"></p>
+            <div class="perfil-post">
+                <img src="/media/profile_images/channels4_profile.jpg" alt="">
+                <a href="" class="perfil-name-post" >Victor Amaral</a>
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/script.js"></script>
 </body>
 </html>
