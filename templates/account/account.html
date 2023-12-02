@@ -3,69 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Victor</title>
+    <title>{{request.user.username}}</title>
     <link rel="stylesheet" href="/static/css/blog/home.css">
     <link rel="stylesheet" href="/static/css/blog/post.css">
     <link rel="stylesheet" href="/static/css/blog/hover.css">
-    <link rel="stylesheet" href="/static/css/detail/footer.css">
-    <link rel="stylesheet" href="/static/css/detail/footer.css">
     <link rel="stylesheet" href="/static/css/account/perfil.css">
+    <link rel="stylesheet" href="/static/css/menu.css">
 </head>
 <body>
     <div class="container">
-        <header id="header">
-            <p>Blog<span>Mind</span></p>
-            <a href="">Logout</a>
-        </header>
-        <div class="banner">
-            <img src="{{user.background.url}}" alt="">
-        </div>
-        <div class="perfil">
-            <div id="foto-perfil">
-                <img src="{{user.profileimg.url}}" alt="">
-            </div>
-            <div id="text-perfil">
-                <h2>{{user.user}}</h2> 
-            </div>
-        </div>
+        {% include 'blog/header.html '%}
+        {% include 'account/perfil.html '%}
         <article>
-            <div class="mudar">
-                <div id="mudar">
-                    <i class="fa-sharp fa-regular fa-user"></i> 
-                    <p>Mudar Nome</p>
-                </div>
-                <i class="fa-sharp fa-solid fa-arrow-right"></i>
-            </div>
-            <div class="mudar">
-                <div id="mudar">
-                    <i class="fa-sharp fa-solid fa-key"></i> 
-                    <p>Mudar Senha</p>
-                </div>
-                <i class="fa-sharp fa-solid fa-arrow-right"></i>
-            </div>
-            <div class="mudar">
-                <div id="mudar">
-                    <i class="fa-sharp fa-solid fa-envelope"></i> 
-                    <p>Mudar Email</p>
-                </div>
-                <i class="fa-sharp fa-solid fa-arrow-right"></i>
-            </div>
-            <div class="mudar">
-                <div id="mudar">
-                    <i class="fa-sharp fa-solid fa-folder"></i> 
-                    <p>Mudar Background</p>
-                </div>
-                <i class="fa-sharp fa-solid fa-arrow-right"></i>
-            </div>
+            {% include 'account/buttons.html' %}
         </article>
-        <footer>     
-            <p>©Victor Amaral || All Right Reserved</p>
-            <i class="fa-brands fa-github"></i>
-            <i class="fa-brands fa-linkedin"></i>
-            <i class="fa-brands fa-instagram"></i>        
-        </footer>
+        {% include 'menu.html' %}
     </div>
-
     <script src="/static/js/script.js"></script>
     <script src="https://kit.fontawesome.com/c99caadda1.js" crossorigin="anonymous"></script>
 </body>

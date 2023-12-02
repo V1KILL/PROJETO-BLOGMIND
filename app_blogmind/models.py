@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.urls import reverse
-
+from django.utils.text import slugify
 
 User = get_user_model()
 
@@ -36,6 +36,12 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+
+        super().save(*args, **kwargs)
 
     def formatted_date(self):
         return self.created.strftime("%d, %B, %Y")

@@ -10,7 +10,7 @@ urlpatterns = [
     path('logout', ViewLogout, name='logout'),
     path('account', ViewAccount, name='account'),
     path('profile/<int:id>', ViewProfile, name='profile'),
-    path('post', ViewPost, name='post'),
+    path('postar', ViewPost, name='postar'),
     path('home', ViewHome, name='home'),
     path('detail/<int:year>/<int:month>/<int:day>/<str:slug>', ViewDetail, name='detail'),
 ]

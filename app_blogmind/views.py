@@ -82,4 +82,15 @@ def ViewDetail(request, year, month, day, slug):
     return render(request, 'detail/detail.html', {'post':post, 'comments':comments})
 
 def ViewPost(request):
-    return render(request, 'postar.html')
+    if request.method == 'POST':
+        title = request.POST['title']
+        descricao = request.POST['descricao']
+        if 'file' in request.FILES:
+            arquivo = request.FILES['file']
+            
+            user = UserProfile.objects.get(user=request.user)
+            post = Post.objects.create(user=user, title=title, description=descricao, image=arquivo)
+            return redirect('profile', request.user.id)
+       
+
+    return render(request, 'postar.html', {'user':user})

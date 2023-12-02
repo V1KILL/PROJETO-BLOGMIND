@@ -1,23 +1,30 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="/static/css/postar.css">
-    <link rel="stylesheet" href="/static/css/blog/post.css">
-    <link rel="stylesheet" href="/static/css/blog/home.css">
+    <link rel="stylesheet" href="{% static 'css/postar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/blog/post.css' %}">
+    <link rel="stylesheet" href="{% static 'css/blog/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/blog/hover.css' %}">
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}">
 </head>
 <body> 
     <div class="container">
+        {% include 'blog/header.html'%}
         <div class="add_post">
             <form action="{% url 'postar' %}" enctype="multipart/form-data" method="POST">
+                {% csrf_token %}
                 <h3>Adicionar Uma Imagem</h3>
-                <input type="file" name="" id="image">
+                <label for="image" id="filebutton"><i class=" fa-solid fa-image"></i></label>
+                <input type="file" name="file" id="image">
                 <h3>Título do Post</h3>
-                <input type="text" name="" id="title" autocomplete="off">
+                <input type="text" name="title" id="title" autocomplete="off" placeholder="Write Here">
                 <h3>Descrição</h3>
-                <textarea name="" id="descricao" cols="30" rows="10"></textarea>
+                <textarea name="descricao" id="descricao" cols="30" rows="10" placeholder="Write Here" ></textarea>
                 <input type="submit" value="Adicionar Post" id="submit">
             </form>
         </div>
@@ -28,11 +35,14 @@
             <a href="" class="title" id="preview-title"></a>
             <p id="preview-descricao"></p>
             <div class="perfil-post">
-                <img src="/media/profile_images/channels4_profile.jpg" alt="">
-                <a href="" class="perfil-name-post" >Victor Amaral</a>
+                <img src="{{user.profileimg.url}}" alt="">
+                <a href="" class="perfil-name-post" >{{request.user.username}}</a>
             </div>
+            
         </div>
+        
     </div>
+    <script src="https://kit.fontawesome.com/c99caadda1.js" crossorigin="anonymous"></script>
     <script src="/static/js/script.js"></script>
 </body>
 </html>
