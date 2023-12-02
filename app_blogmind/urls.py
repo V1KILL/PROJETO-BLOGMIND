@@ -1,17 +1,21 @@
 
 from django.urls import path
-from .views import ViewHome, ViewDetail, ViewLogin, ViewRegister, ViewLogout, ViewAccount, ViewProfile, ViewPost
+from .views import ViewHome, ViewDetail, ViewLogin, ViewRegister, ViewLogout, ViewAccount, ViewProfile, ViewPost, ViewMudarPerfil, ViewMudarBackGround, ViewMudarNome, ViewMudarSenha
 
 from django.conf.urls.static import static
 from django.conf import settings
 urlpatterns = [
+    path('', ViewHome, name='home'),
     path('login', ViewLogin, name='login'),
     path('register', ViewRegister, name='register'),
     path('logout', ViewLogout, name='logout'),
     path('account', ViewAccount, name='account'),
     path('profile/<int:id>', ViewProfile, name='profile'),
     path('postar', ViewPost, name='postar'),
-    path('home', ViewHome, name='home'),
+    path('mudarperfil', ViewMudarPerfil, name='mudarperfil'),
+    path('mudarbackground', ViewMudarBackGround, name='mudarbackground'),
+    path('mudarnome/<str:username>', ViewMudarNome, name='mudarnome'),
+    path('mudarsenha', ViewMudarSenha, name='mudarsenha'),
     path('detail/<int:year>/<int:month>/<int:day>/<str:slug>', ViewDetail, name='detail'),
 ]
 

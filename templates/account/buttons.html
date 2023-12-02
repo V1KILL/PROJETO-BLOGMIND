@@ -3,26 +3,26 @@
         <i class="fa-sharp fa-regular fa-user"></i> 
         <p>Mudar Nome</p>
     </div>
-    <i class="fa-sharp fa-solid fa-arrow-right"></i>
+    <i onclick="Nome()" class="fa-sharp fa-solid fa-arrow-right"></i>
 </div>
 <div class="mudar">
     <div id="mudar">
         <i class="fa-sharp fa-solid fa-key"></i> 
         <p>Mudar Senha</p>
     </div>
-    <i class="fa-sharp fa-solid fa-arrow-right"></i>
+    <i onclick="Senha('{{request.user.id}}')" class="fa-sharp fa-solid fa-arrow-right"></i>
 </div>
 <div class="mudar">
     <div id="mudar">
-        <i class="fa-sharp fa-solid fa-envelope"></i> 
-        <p>Mudar Email</p>
+        <i class="fa-sharp fa-solid fa-camera"></i> 
+        <p>Mudar Perfil</p>
     </div>
-    <i class="fa-sharp fa-solid fa-arrow-right"></i>
+    <i onclick="Perfil('{{request.user.id}}')" class="fa-sharp fa-solid fa-arrow-right"></i>
 </div>
 <div class="mudar">
     <div id="mudar">
         <i class="fa-sharp fa-solid fa-folder"></i> 
         <p>Mudar Background</p>
     </div>
-    <i class="fa-sharp fa-solid fa-arrow-right"></i>
+    <i onclick="BackGround('{{request.user.id}}')" class="fa-sharp fa-solid fa-arrow-right"></i>
 </div>

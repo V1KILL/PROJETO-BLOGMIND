@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User, auth
-from django.contrib.auth import logout
+from django.contrib.auth import logout, update_session_auth_hash
 from django.contrib import messages
 from .models import Post, UserProfile
 from django.shortcuts import get_object_or_404
@@ -81,16 +81,59 @@ def ViewDetail(request, year, month, day, slug):
 
     return render(request, 'detail/detail.html', {'post':post, 'comments':comments})
 
+@login_required(login_url='login')
 def ViewPost(request):
+    user = UserProfile.objects.get(user=request.user)
     if request.method == 'POST':
         title = request.POST['title']
         descricao = request.POST['descricao']
         if 'file' in request.FILES:
             arquivo = request.FILES['file']
             
-            user = UserProfile.objects.get(user=request.user)
             post = Post.objects.create(user=user, title=title, description=descricao, image=arquivo)
             return redirect('profile', request.user.id)
        
 
     return render(request, 'postar.html', {'user':user})
+
+@login_required(login_url='login')
+def ViewMudarPerfil(request):
+    if request.method == 'POST':
+        image = request.FILES['image']
+        user = UserProfile.objects.get(user=request.user)
+        user.profileimg = image
+        user.save()
+    url_anterior = request.META.get('HTTP_REFERER')
+    return redirect(url_anterior)
+ 
+@login_required(login_url='login')
+def ViewMudarBackGround(request):
+    if request.method == 'POST':
+        image = request.FILES['image']
+        user = UserProfile.objects.get(user=request.user)
+        user.background = image
+        user.save()
+    url_anterior = request.META.get('HTTP_REFERER')
+    return redirect(url_anterior)
+
+@login_required(login_url='login')
+def ViewMudarNome(request, username):        
+    url_anterior = request.META.get('HTTP_REFERER')
+    
+    if User.objects.filter(username=username).exists():
+        
+        return redirect(url_anterior)
+    else:
+        request.user.username = username
+        request.user.save()
+    return redirect(url_anterior)
+
+@login_required(login_url='login')
+def ViewMudarSenha(request):
+    if request.method == 'POST':
+        password = request.POST.get('password')
+        request.user.set_password(password)
+        request.user.save()
+        update_session_auth_hash(request, request.user)
+    url_anterior = request.META.get('HTTP_REFERER')
+    return redirect(url_anterior)

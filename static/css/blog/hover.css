@@ -39,4 +39,8 @@ div.post .title:hover {
 
 div.perfil #foto-perfil img:hover {
     transform: scale(1.05);
- }
+}
+
+div.perfil-post a:hover {
+    color: #19C37D;
+}
