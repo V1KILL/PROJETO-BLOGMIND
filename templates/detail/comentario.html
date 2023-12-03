@@ -7,7 +7,7 @@
             <img src="{{comment.user.profileimg.url}}" alt="">         
         </div>
         <div id="descricao">
-            <h4>{{comment.user}}</h5>
+            <a href="{% url 'profile' comment.user.user.id %}">{{comment.user}}</a>
             <p>{{comment.text}}</p>
         </div>
     </div>

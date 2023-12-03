@@ -1,7 +1,8 @@
 <div id="comentar">
     <p>Fazer Um Comentário</p>
-    <form action="">
-        <input id="comentario" type="text" placeholder="Comentário">
+    <form action="{{ post.get_absolute_url_comment }}" method="POST">
+        {% csrf_token %}
+        <input id="comentario" name="comentario"  type="text" placeholder="Comentário">
         <input id="submit" type="submit" value="Enviar Comentário">
     </form>
 </div>

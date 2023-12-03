@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User, auth
 from django.contrib.auth import logout, update_session_auth_hash
 from django.contrib import messages
-from .models import Post, UserProfile
+from .models import Post, UserProfile, Comment
 from django.shortcuts import get_object_or_404
 
 def ViewLogin(request):
@@ -135,5 +135,18 @@ def ViewMudarSenha(request):
         request.user.set_password(password)
         request.user.save()
         update_session_auth_hash(request, request.user)
+    url_anterior = request.META.get('HTTP_REFERER')
+    return redirect(url_anterior)
+
+def ViewComentar(request, year, month, day, slug):
+    if request.method == 'POST':
+        text = request.POST['comentario']
+
+        post = Post.objects.get(created__year=year, created__month=month, created__day=day, slug=slug)
+        user = UserProfile.objects.get(user=request.user
+                                       )
+        
+        comment = Comment.objects.create(post=post, user=user, text=text)
+
     url_anterior = request.META.get('HTTP_REFERER')
     return redirect(url_anterior)
