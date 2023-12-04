@@ -53,6 +53,15 @@ div.add_post form input#submit:hover {
     background-color: #0094C6;
 }
 
+div.add_post form input#tags {
+   outline: none;
+   border: none;
+   padding: 10px;
+   background-color: transparent;
+   border-bottom: 1px solid ghostwhite;
+   color: ghostwhite;
+}
+
 div.add_post form input#title {
    outline: none;
    border: none;

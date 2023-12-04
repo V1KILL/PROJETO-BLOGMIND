@@ -65,13 +65,14 @@ menu {
     width: 100%;
 }
 
-menu p {
+menu a {
     user-select: none;
     cursor: pointer;
     padding: 10px;
     color: white;
     font-weight: bold;
     transition: 0.5s all ease;
+    text-decoration: none;
 }
 
 article {

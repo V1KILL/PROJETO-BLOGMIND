@@ -6,6 +6,8 @@ from django.contrib import messages
 from .models import Post, UserProfile, Comment
 from django.shortcuts import get_object_or_404
 
+from taggit.models import Tag
+
 def ViewLogin(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -87,10 +89,14 @@ def ViewPost(request):
     if request.method == 'POST':
         title = request.POST['title']
         descricao = request.POST['descricao']
+        tags = request.POST['tags']
+        
         if 'file' in request.FILES:
             arquivo = request.FILES['file']
             
             post = Post.objects.create(user=user, title=title, description=descricao, image=arquivo)
+
+            post.tags.add(*tags)
             return redirect('profile', request.user.id)
        
 
@@ -150,3 +156,11 @@ def ViewComentar(request, year, month, day, slug):
 
     url_anterior = request.META.get('HTTP_REFERER')
     return redirect(url_anterior)
+
+def ViewTag(request, tag_slug=None):
+    posts = Post.objects.all()
+    tag = get_object_or_404(Tag, slug=tag_slug)
+    posts = posts.filter(tags__in=[tag])
+
+
+    return render(request, 'blog/home.html', {'posts':posts})

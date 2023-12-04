@@ -14,15 +14,23 @@ window.onscroll = function() {
 document.getElementById("title").addEventListener("input", updatePreview);
 
 document.getElementById("descricao").addEventListener("input", updatePreview);
+document.getElementById("tags").addEventListener("input", updatePreview);
 
 function updatePreview() {
       const title = document.getElementById("title").value;
       
       const description = document.getElementById("descricao").value;
 
+      const tags = document.getElementById("tags").value;
+
+
       document.getElementById("preview-title").textContent = title;
       
       document.getElementById("preview-descricao").textContent = description;
+
+      document.getElementById("preview-tags").textContent ='#' + tags
+      
+
 }
 
 const input = document.querySelector('#image');

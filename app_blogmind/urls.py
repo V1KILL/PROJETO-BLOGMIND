@@ -1,11 +1,12 @@
 
 from django.urls import path
-from .views import ViewHome, ViewDetail, ViewLogin, ViewRegister, ViewLogout, ViewAccount, ViewProfile, ViewPost, ViewMudarPerfil, ViewMudarBackGround, ViewMudarNome, ViewMudarSenha, ViewComentar
+from .views import ViewHome, ViewDetail, ViewLogin, ViewRegister, ViewLogout, ViewAccount, ViewProfile, ViewPost, ViewMudarPerfil, ViewMudarBackGround, ViewMudarNome, ViewMudarSenha, ViewComentar, ViewTag
 
 from django.conf.urls.static import static
 from django.conf import settings
 urlpatterns = [
     path('', ViewHome, name='home'),
+    path('tag/<slug:tag_slug>/', ViewTag, name='tag'),
     path('login', ViewLogin, name='login'),
     path('register', ViewRegister, name='register'),
     path('logout', ViewLogout, name='logout'),

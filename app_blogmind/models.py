@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 from django.utils.text import slugify
+from taggit.managers import TaggableManager
 
 User = get_user_model()
 
@@ -33,6 +34,7 @@ class Post(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     slug = models.SlugField(max_length=250, unique_for_date='created')
     
+    tags = TaggableManager()
 
     def __str__(self):
         return self.title

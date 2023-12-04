@@ -21,8 +21,13 @@
                 <h3>Adicionar Uma Imagem</h3>
                 <label for="image" id="filebutton"><i class=" fa-solid fa-image"></i></label>
                 <input type="file" name="file" id="image">
-                <h3>Título do Post</h3>
+
+                <h3>Tags(ex: english, tecnology)</h3>
+                <input type="text" name="tags" id="tags" autocomplete="off" placeholder="english, tecnology, deploy...">
+
+                <h3>Título</h3>
                 <input type="text" name="title" id="title" autocomplete="off" placeholder="Write Here">
+                
                 <h3>Descrição</h3>
                 <textarea name="descricao" id="descricao" cols="30" rows="10" placeholder="Write Here" ></textarea>
                 <input type="submit" value="Adicionar Post" id="submit">
@@ -31,6 +36,13 @@
         <div class="post">
             <div class="img">
                 <img src="" alt="" id="preview-image">
+            </div>
+            <div class="resources">
+                <div class="tags">
+                    <a class="tag" id="preview-tags"></a>
+                </div>
+                
+                <p class="data">22, 02, 2006</p>
             </div>
             <a href="" class="title" id="preview-title"></a>
             <p id="preview-descricao"></p>

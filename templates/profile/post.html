@@ -5,9 +5,11 @@
             <img src="{{post.image.url}}" alt="">
         </div>
         <div class="resources">
+            {% for tag in post.tags.all %}
             <div class="tags">
-                <p class="tag">#learnenglish</p>
+                <a href="{% url 'tag' tag.slug %}" class="tag">#{{tag}}</a>
             </div>
+            {% endfor %}
             <p class="data">{{post.formatted_date}}</p>
         </div>
         <a href="{{post.get_absolute_url}}" class="title">{{post.title}}</a>
