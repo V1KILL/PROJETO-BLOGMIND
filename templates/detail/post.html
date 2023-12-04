@@ -1,8 +1,9 @@
+{% load blog_extras %}
 <div class="post">
     <div class="img">
         <img src="{{post.image.url}}" alt="">
     </div>
     <p class="title">
-        {{post.description}}
+        {{post.description|convert_markdown|safe}}
     </p>
 </div>

@@ -10,3 +10,7 @@ article div.post .img img:hover {
 a#share:hover {
     color: #19C37D;
 }
+
+div.comentario div#comentario div#descricao a:hover {
+    color: #19C37D;
+}

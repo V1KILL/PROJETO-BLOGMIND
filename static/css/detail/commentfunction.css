@@ -5,6 +5,7 @@ div#comentar {
     padding: 20px;
     width: 100%;
     border: 1px solid grey;
+    margin-bottom: 70px;
 }
 
 div#comentar p {

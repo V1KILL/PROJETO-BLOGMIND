@@ -34,8 +34,12 @@ div.comentario div#comentario div#descricao {
     flex-direction: column;
     gap: 10px;
     color: white;
+    font-weight: 300;
 }
 
-div.comentario div#comentario div#descricao p {
-    font-weight: 300;
+div.comentario div#comentario div#descricao a {
+    font-weight: 500;
+    text-decoration: none;
+    color: white;
+    transition: 0.3s ease;
 }
