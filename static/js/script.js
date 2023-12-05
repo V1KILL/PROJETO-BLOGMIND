@@ -215,3 +215,15 @@ function getCookie(name) {
     const parts = value.split(`; ${name}=`);
     if (parts.length === 2) return parts.pop().split(';').shift();
 }
+
+function Share() {
+    var url = window.location.href 
+    navigator.clipboard.writeText(url).then(() => {
+      Swal.fire({
+        title: 'Copied Link!',
+        width: '250px',
+        height: '200px',  
+      })
+    })
+
+}

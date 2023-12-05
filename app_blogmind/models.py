@@ -53,6 +53,9 @@ class Post(models.Model):
     
     def get_absolute_url_comment(self):
         return reverse('comentar', args=[self.created.year, self.created.month, self.created.day, self.slug])
+    
+    def removepost(self):
+        return reverse('removepost', args=[self.created.year, self.created.month, self.created.day, self.slug])
 
     class Meta:
         ordering = ['-created']

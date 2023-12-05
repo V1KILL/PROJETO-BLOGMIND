@@ -1,4 +1,5 @@
 {% load blog_extras %}
+
 <div class="post">
     <div class="img">
         <img src="{{post.image.url}}" alt="">
@@ -7,3 +8,19 @@
         {{post.description|convert_markdown|safe}}
     </p>
 </div>
+<div class="resources">
+    {% if post.user.user.username == request.user.username %}
+    <a id="edit" class="fa-shartp fa-solid fa-pen"></a>
+    <a href="{{ post.removepost }}" id="remove" class="fa-shartp fa-solid fa-trash"></a>
+    
+    <a onclick="Share()" id="share" class="fa-shartp fa-solid fa-share"></a>
+    
+    <a id="info" class="fa-shartp fa-solid fa-circle-info"></a>
+    {% else %}
+
+    <a onclick="Share()" id="share" class="fa-shartp fa-solid fa-share"></a>
+    <a id="info" class="fa-shartp fa-solid fa-circle-info"></a>
+
+    {% endif %}
+</div>
+

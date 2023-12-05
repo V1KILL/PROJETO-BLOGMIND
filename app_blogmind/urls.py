@@ -1,6 +1,6 @@
 
 from django.urls import path
-from .views import ViewHome, ViewDetail, ViewLogin, ViewRegister, ViewLogout, ViewAccount, ViewProfile, ViewPost, ViewMudarPerfil, ViewMudarBackGround, ViewMudarNome, ViewMudarSenha, ViewComentar, ViewTag
+from .views import ViewHome, ViewDetail, ViewLogin, ViewRegister, ViewLogout, ViewAccount, ViewProfile, ViewPost, ViewMudarPerfil, ViewMudarBackGround, ViewMudarNome, ViewMudarSenha, ViewComentar, ViewTag, ViewRemovePost, ViewInfo, ViewEditPost, ViewShare
 
 from django.conf.urls.static import static
 from django.conf import settings
@@ -19,6 +19,10 @@ urlpatterns = [
     path('mudarnome/<str:username>', ViewMudarNome, name='mudarnome'),
     path('mudarsenha', ViewMudarSenha, name='mudarsenha'),
     path('detail/<int:year>/<int:month>/<int:day>/<str:slug>', ViewDetail, name='detail'),
+    path('removepost/<int:year>/<int:month>/<int:day>/<str:slug>', ViewRemovePost, name='removepost'),
+    path('editpost/<int:year>/<int:month>/<int:day>/<str:slug>', ViewEditPost, name='editpost'),
+    path('share/<int:year>/<int:month>/<int:day>/<str:slug>', ViewShare, name='share'),
+    path('info/<int:year>/<int:month>/<int:day>/<str:slug>', ViewInfo, name='info'),
 ]
 
 if settings.DEBUG:

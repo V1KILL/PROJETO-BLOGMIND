@@ -103,4 +103,47 @@ article div.post p {
     color: white;
 }
 
+div.resources {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+    padding: 10px;
+}
+
+
+div.resources a {
+    color: white;
+    border-radius: 50%;padding: 10px;
+    background-color: #737373;
+}
+
+div.resources a#remove {
+    color: white;
+    background-color: #DD3333;
+}
+
+div.resources a#edit {
+    color: white;
+    background-color: #FFB900;
+}
+
+
+div.resources a#info {
+    color: white;
+    background-color: #00B2FF;
+}
+
+div.resources a#share {
+    color: white;
+    background-color: #00A4EF;
+}
+
+i#arrow {
+    color: white;
+}
+
+
+
 

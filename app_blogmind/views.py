@@ -71,7 +71,7 @@ def ViewProfile(request, id):
 
 @login_required(login_url='login')
 def ViewHome(request):
-    posts = Post.objects.all()
+    posts = Post.objects.all().exclude(user=UserProfile.objects.get(user=request.user))
     
                                    
     return render(request, 'blog/home.html', {'posts':posts})
@@ -158,9 +158,22 @@ def ViewComentar(request, year, month, day, slug):
     return redirect(url_anterior)
 
 def ViewTag(request, tag_slug=None):
-    posts = Post.objects.all()
+    posts = Post.objects.all().exclude(user=UserProfile.objects.get(user=request.user))
     tag = get_object_or_404(Tag, slug=tag_slug)
     posts = posts.filter(tags__in=[tag])
 
-
     return render(request, 'blog/home.html', {'posts':posts})
+
+def ViewEditPost(request, year, month, day, slug):
+    return redirect('/')
+
+def ViewRemovePost(request, year, month, day, slug):
+    post = Post.objects.get(user=UserProfile.objects.get(user=request.user),created__year=year, created__month=month, created__day=day, slug=slug)
+    post.delete()
+    return redirect('/')
+
+def ViewShare(request, year, month, day, slug):
+    return redirect('/')
+
+def ViewInfo(request, year, month, day, slug):
+    return redirect('/')
