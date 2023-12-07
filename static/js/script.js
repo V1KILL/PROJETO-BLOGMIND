@@ -12,38 +12,27 @@ window.onscroll = function() {
 };
 
 document.getElementById("title").addEventListener("input", updatePreview);
-
 document.getElementById("descricao").addEventListener("input", updatePreview);
 document.getElementById("tags").addEventListener("input", updatePreview);
 
 function updatePreview() {
       const title = document.getElementById("title").value;
-      
       const description = document.getElementById("descricao").value;
-
       const tags = document.getElementById("tags").value;
 
-
       document.getElementById("preview-title").textContent = title;
-      
       document.getElementById("preview-descricao").textContent = description;
-
       document.getElementById("preview-tags").textContent ='#' + tags
-      
-
 }
 
 const input = document.querySelector('#image');
 input.addEventListener('change', function(e) {
       const tgt = e.target || window.event.srcElement;
-
       const files = tgt.files;
-
       const fr = new FileReader();
       fr.onload = function () {
             document.querySelector("#preview-image").src = fr.result;
       }
-
       fr.readAsDataURL(files[0]);
 })
 
@@ -53,7 +42,6 @@ async function Perfil(id) {
         input: 'file',
         inputAttributes: {
           'accept': 'image/*',
-          'aria-label': 'Upload your profile picture'
         }
       });
     
@@ -76,7 +64,7 @@ async function Perfil(id) {
           if (response.ok) {
             Swal.fire({
               title: 'Alteração Sucedida',
-              text: 'imagem Alterada Com Sucesso!',
+              text: 'Imagem Alterada Com Sucesso!',
               icon: 'success',
               didClose: () => {
                     window.location.href = `profile/${id}`;
@@ -84,9 +72,8 @@ async function Perfil(id) {
             });
           } else {
             Swal.fire({
-              title: 'Upload failed',
-              text: 'There was an error uploading the image.',
-              icon: 'error'
+              title: 'Alteração Falhou',
+              icon: 'error',
             });
           }
         } catch (error) {
@@ -124,7 +111,7 @@ async function BackGround(id) {
           if (response.ok) {
             Swal.fire({
               title: 'Alteração Sucedida',
-              text: 'Background alterado com sucesso',
+              text: 'Background Alterado com Sucesso',
               icon: 'success',
               didClose: () => {
                     window.location.href = `profile/${id}`;
@@ -132,8 +119,7 @@ async function BackGround(id) {
             });
           } else {
             Swal.fire({
-              title: 'Upload failed',
-              text: 'There was an error uploading the image.',
+              title: 'Alteração Falhou',
               icon: 'error'
             });
           }
@@ -145,7 +131,7 @@ async function BackGround(id) {
 
 async function Nome() {
       const { value: username } = await Swal.fire({
-        title: 'Enter your Name',
+        title: 'insira seu nome',
         input: 'text',
         inputLabel: '',
         inputPlaceholder: '',
@@ -169,7 +155,7 @@ async function Nome() {
 
 async function Senha(id) {
     const { value: password} = await Swal.fire({
-      title: 'Senha',
+      title: 'Nova Senha',
       input: 'password',
       
     });
@@ -199,8 +185,7 @@ async function Senha(id) {
           });
         } else {
           Swal.fire({
-            title: 'Upload failed',
-            text: 'There was an error uploading the image.',
+            title: 'Alteração Falhou',
             icon: 'error'
           });
         }
