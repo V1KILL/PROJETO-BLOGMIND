@@ -210,5 +210,39 @@ function Share() {
         height: '200px',  
       })
     })
-
 }
+function Info(date, att) {
+      Swal.fire({
+        title: `Publicado em:<br> ${date}<br>Última Atualização ${att}`,
+        width: '500px',
+        height: '500px',  
+      })
+}
+
+function EditarPost(id) {
+  Swal.fire({
+    title: '<p style="color:white;">Fixar Tarefa</p>',
+    html: `
+      <input style="color: white; border: 2px solid white;" id="titulo" class="swal2-input" placeholder="Título" autocomplete="off">
+      <textarea style="color: white; border: 2px solid white; outline: none; background: transparent; width: 100%; margin-top: 20px; padding: 20px;" name="descricao" id="descricao" cols="30" rows="10" placeholder="Write Here" ></textarea>
+    `,
+    showCancelButton: true,
+    confirmButtonText: 'Enviar',
+    showLoaderOnConfirm: true,
+    background: '#343541',
+    confirmButtonColor: '#19C37D',
+    preConfirm: () => {
+      const titulo = Swal.getPopup().querySelector('#titulo').value;
+      const descricao = Swal.getPopup().querySelector('#descricao').value;
+      
+      if (titulo.trim() === '' || descricao.trim() === '') {
+        Swal.showValidationMessage('O título e a descrição não podem ser vazios ou conter apenas espaços em branco');
+        return false;
+      } else {
+        window.location.href = `/editpost/${titulo}/${descricao.toString()}/${id}`;
+      }
+    },
+    allowOutsideClick: () => !Swal.isLoading()
+  });
+}
+    

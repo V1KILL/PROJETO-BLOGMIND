@@ -15,6 +15,7 @@ div.perfil {
     background-color: #2d2e39;
     padding: 20px;
     gap: 20px;
+    word-break: break-all;
 }
    
 div.perfil #text-perfil {

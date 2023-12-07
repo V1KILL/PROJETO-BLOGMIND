@@ -90,7 +90,9 @@ def ViewPost(request):
         title = request.POST['title']
         descricao = request.POST['descricao']
         tags = request.POST['tags']
-        
+        print(tags)
+        tags = [tag.strip() for tag in tags.split(',')]
+            
         if 'file' in request.FILES:
             arquivo = request.FILES['file']
             
@@ -164,8 +166,13 @@ def ViewTag(request, tag_slug=None):
 
     return render(request, 'blog/home.html', {'posts':posts})
 
-def ViewEditPost(request, year, month, day, slug):
-    return redirect('/')
+def ViewEditPost(request, titulo, descricao, id):
+    post = Post.objects.get(id=id)
+    post.title = titulo
+    post.description = descricao
+    post.save()
+    url_anterior = request.META.get('HTTP_REFERER')
+    return redirect(url_anterior)
 
 def ViewRemovePost(request, year, month, day, slug):
     post = Post.objects.get(user=UserProfile.objects.get(user=request.user),created__year=year, created__month=month, created__day=day, slug=slug)

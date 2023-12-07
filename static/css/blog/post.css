@@ -13,6 +13,8 @@ div.post {
     background-color: rgb(50, 53, 63);
     z-index: 0;
     word-wrap: break-word;
+    max-width: 500px;
+    min-width: 320px;
 }
 
 div.post a {

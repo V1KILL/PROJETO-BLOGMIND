@@ -103,3 +103,6 @@ div.add_post form label#filebutton:hover {
     background-color: #0094C6;
 }
 
+div.post {
+    min-width: 320px;
+}
