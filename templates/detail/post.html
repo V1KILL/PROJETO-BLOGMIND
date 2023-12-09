@@ -15,11 +15,11 @@
     
     <a onclick="Share()" id="share" class="fa-shartp fa-solid fa-share"></a>
     
-    <a onclick="Info('{{post.formatted_date}}','{{post.modified}}')" id="info" class="fa-shartp fa-solid fa-circle-info"></a>
+    <a onclick="Info('{{post.formatted_date}}','{{post.formatted_modified}}')" id="info" class="fa-shartp fa-solid fa-circle-info"></a>
     {% else %}
 
     <a onclick="Share()" id="share" class="fa-shartp fa-solid fa-share"></a>
-    <a onclick="Info('{{post.formatted_date}}')" id="info" class="fa-shartp fa-solid fa-circle-info"></a>
+    <a onclick="Info('{{post.formatted_date}}', '{{post.formatted_modified}}')" id="info" class="fa-shartp fa-solid fa-circle-info"></a>
 
     {% endif %}
 </div>

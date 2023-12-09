@@ -84,6 +84,7 @@ article div.post {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    
 }
 
 article div.post .img {

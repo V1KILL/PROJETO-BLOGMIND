@@ -48,6 +48,9 @@ class Post(models.Model):
     def formatted_date(self):
         return self.created.strftime("%d, %B, %Y")
     
+    def formatted_modified(self):
+        return self.modified.strftime("%d, %B, %Y")
+    
     def get_absolute_url(self):
         return reverse('detail', args=[self.created.year, self.created.month, self.created.day, self.slug])
     

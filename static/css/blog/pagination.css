@@ -1,0 +1,16 @@
+div.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-bottom: 100px;
+}
+
+div.pagination .step-links {
+    display: flex;
+    gap: 10px;
+}
+
+div.pagination a {
+    color: white;
+}

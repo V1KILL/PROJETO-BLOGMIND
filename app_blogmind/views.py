@@ -5,7 +5,7 @@ from django.contrib.auth import logout, update_session_auth_hash
 from django.contrib import messages
 from .models import Post, UserProfile, Comment
 from django.shortcuts import get_object_or_404
-
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from taggit.models import Tag
 
 def ViewLogin(request):
@@ -72,8 +72,16 @@ def ViewProfile(request, id):
 @login_required(login_url='login')
 def ViewHome(request):
     posts = Post.objects.all().exclude(user=UserProfile.objects.get(user=request.user))
-    
-                                   
+ 
+    paginator = Paginator(posts, 6)
+    page = request.GET.get('page')
+
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)                               
     return render(request, 'blog/home.html', {'posts':posts})
 
 @login_required(login_url='login')
@@ -163,6 +171,16 @@ def ViewTag(request, tag_slug=None):
     posts = Post.objects.all().exclude(user=UserProfile.objects.get(user=request.user))
     tag = get_object_or_404(Tag, slug=tag_slug)
     posts = posts.filter(tags__in=[tag])
+
+    paginator = Paginator(posts, 6)
+    page = request.GET.get('page')
+
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)           
 
     return render(request, 'blog/home.html', {'posts':posts})
 

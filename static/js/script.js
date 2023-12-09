@@ -213,7 +213,7 @@ function Share() {
 }
 function Info(date, att) {
       Swal.fire({
-        title: `Publicado em:<br> ${date}<br>Última Atualização ${att}`,
+        title: `Publicado em:<br> ${date} <br> Última Atualização: <br> ${att}`,
         width: '500px',
         height: '500px',  
       })
