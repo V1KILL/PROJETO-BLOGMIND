@@ -197,8 +197,10 @@ def ViewRemovePost(request, year, month, day, slug):
     post.delete()
     return redirect('/')
 
-def ViewShare(request, year, month, day, slug):
-    return redirect('/')
-
-def ViewInfo(request, year, month, day, slug):
-    return redirect('/')
+def ViewSearch(request):
+    if request.method == 'POST':
+        query = request.POST['search']
+        posts = Post.objects.filter(title__icontains=query)
+        return render(request, 'search/search.html', {'posts':posts, 'query':query})
+    return render(request, 'search/search.html')
+    

@@ -1,0 +1,26 @@
+
+<article>
+    {% for post in posts %}
+        <div class="post">
+            <div class="img">
+                <img src="{{post.image.url}}" alt="">
+            </div>
+            <div class="resources">
+                <div class="tags">
+                    {% for tag in post.tags.all %}
+    
+                    <a href="{% url 'tag' tag.slug %}" class="tag">#{{tag}}
+                    </a>
+    
+                    {% endfor %}
+                </div>
+                <p class="data">{{post.formatted_date}}</p>
+            </div>
+            <a href="{{post.get_absolute_url}}" class="title">{{post.title}}</a>
+            <div class="perfil-post">
+                <img src="{{post.user.profileimg.url}}" alt="">
+                <a href="{% url 'profile' post.user.user.id %}" class="perfil-name-post">{{post.user}}</a>
+            </div>
+        </div>
+    {% endfor %}
+</article>

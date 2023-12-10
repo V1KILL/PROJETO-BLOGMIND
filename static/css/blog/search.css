@@ -1,0 +1,31 @@
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row-reverse;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+input[type=text] {
+    color: white;
+    font-weight: 500;
+    max-width: 92%;
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 8px;
+    background-color: #5b6072;
+}
+
+input[type=text]::placeholder {
+    color: white;
+}
+button[type=submit] {
+    border: none;
+    outline: none;
+    background-color: white;
+    max-width: 8%;
+    width: 100%;
+    padding: 8px;
+}
