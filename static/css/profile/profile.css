@@ -12,25 +12,25 @@ div.banner img {
 
 div.perfil {
     display: flex;
-    background-color: #2d2e39;
+    word-break: break-all;
     padding: 20px;
     gap: 20px;
-    word-break: break-all;
+    background-color: #2d2e39;
 }
    
 div.perfil #text-perfil {
-      color: white;
-      user-select: none;
+    color: white;
+    user-select: none;
 }
    
 div.perfil #foto-perfil img {
-      position: relative;
-      top: -30px;
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: center;
+    position: relative;
+    width: 100px;
+    height: 100px;
+    top: -30px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
 }
 
 article {

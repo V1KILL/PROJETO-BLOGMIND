@@ -3,18 +3,18 @@
 div.post {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    padding: 15px;
-    overflow: hidden;  
-    user-select: none;
-    color: white;
-    border-radius: 5px;
-    border: 1px solid rgba(128, 128, 128, 0.497);
-    background-color: rgb(50, 53, 63);
-    z-index: 0;
     word-wrap: break-word;
     width: 500px;
     min-width: 310px;
+    padding: 15px;
+    gap: 10px;
+    overflow: hidden;  
+    user-select: none;
+    color: white;
+    border: 1px solid rgba(128, 128, 128, 0.497);
+    border-radius: 5px;
+    background-color: rgb(50, 53, 63);
+    z-index: 0;
 }
 
 div.post a {
@@ -29,27 +29,25 @@ div.post div.img {
 
 div.post img {
     display: flex;
-    border-radius: 10px;
     width: 100%;
     height: 100%;
+    border-radius: 10px;
     object-fit: cover;
     object-position: center;
     transition: 0.3s all ease;
-    
 }
 
 div.post .tag {
     font-weight: 500;
     cursor: pointer;
-    transition: 0.3s all ease;
     color: rgb(189, 189, 189);
-   
+    transition: 0.3s all ease;
 }
 
 div.post .title {
-    color: white;
     font-weight: 600;
     cursor: pointer;
+    color: white;
     transition: 0.3s all ease;
 }
 
@@ -70,9 +68,9 @@ div.perfil-post {
 }
 
 div.perfil-post img {
-    border-radius: 50%;
     width: 30px;
     height: 30px;
+    border-radius: 50%;
 }
 
 
@@ -83,8 +81,6 @@ div.perfil-post a {
 div.post .resources {
     display: flex;
     justify-content: space-between;
-
-   
 }
 
 div.post .resources .tags {

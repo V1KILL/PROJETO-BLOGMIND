@@ -32,12 +32,12 @@ section#CandLogin {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 20px;
-    padding: 50px;
     width: 50%;
-    background-color: #2d2e39;
-    border-radius: 8px;
+    padding: 50px;
+    gap: 20px;
     border: 1px solid gray;
+    border-radius: 8px;
+    background-color: #2d2e39;
 }
 
 /*Título Login*/
@@ -50,16 +50,16 @@ section#CandLogin {
 .form form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
     width: 100%;
+    gap: 20px;
 }
 
 /*Botão ("Já Possuo uma Conta")*/
 .form form a {
     align-self: flex-end;
+    user-select: none;
     font-weight: 600;
     color: white;
-    user-select: none;
 }
 
 /*Inputs*/
@@ -80,19 +80,19 @@ section#CandLogin {
 /*Input Submit*/
 .form form input#submit {
     color: white;
-    background-color: #19C37D;
     font-weight: bold;
     border: none;
     border-radius: 5px;
+    background-color: #19C37D;
     transition: 0.4s ease;
 }
 
 /*Mensagem De Boas Vindas*/
 .Saudação {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
     width: 60%;
     background-image: url(/static/img/1.jpg);
     background-size: cover;
@@ -103,8 +103,8 @@ section#CandLogin {
 
 /*Título (Bem Vindo)*/
 .Saudação h1 {
-    user-select: none;
     text-align: center;
+    user-select: none;
     font-size: 3em;
 }
 
@@ -131,5 +131,3 @@ section#CandLogin {
         transform: translateY(0);
     }
 }
-
-

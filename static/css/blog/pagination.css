@@ -2,8 +2,8 @@ div.pagination {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
     margin-bottom: 100px;
+    color: white;
 }
 
 div.pagination .step-links {

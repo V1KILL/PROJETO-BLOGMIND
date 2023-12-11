@@ -17,19 +17,17 @@ div.container {
     flex-direction: column;
 }
 
-
 header {
+    position: sticky;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background-color: #2d2e39;
-    position: sticky;
     top: 0;
     user-select: none;
-    z-index: 1;
+    background-color: #2d2e39;
     transition: backdrop-filter 0.3s ease;
-
+    z-index: 1;
 }
 
 header p {
@@ -43,17 +41,17 @@ header a {
     padding: 10px;
     color: white;
     border-radius: 5px;
-    background-color: #0094C6;
+    background-color: #DD3333;
     transition: 0.3s all ease;
 }
 
 p#titulo {
+    user-select: none;
     text-align: center;
     font-weight: 500;
     font-size: 1.5em;
     color: white;
     background-color: #2d2e39;
-    user-select: none;
 }
 
 a#share {
@@ -68,8 +66,8 @@ section {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 20px;
     padding: 20px;
+    gap: 20px;
     background-color: #2d2e39;
 }
 
@@ -84,7 +82,6 @@ article div.post {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    
 }
 
 article div.post .img {
@@ -109,8 +106,8 @@ div.resources {
     justify-content: center;
     align-items: center;
     width: 100%;
-    gap: 10px;
     padding: 10px;
+    gap: 10px;
 }
 
 
@@ -121,30 +118,22 @@ div.resources a {
 }
 
 div.resources a#remove {
-    color: white;
     background-color: #DD3333;
 }
 
 div.resources a#edit {
-    color: white;
     background-color: #FFB900;
 }
 
 
 div.resources a#info {
-    color: white;
     background-color: #00B2FF;
 }
 
 div.resources a#share {
-    color: white;
     background-color: #00A4EF;
 }
 
 i#arrow {
     color: white;
 }
-
-
-
-

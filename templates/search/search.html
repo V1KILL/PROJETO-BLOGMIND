@@ -1,15 +1,16 @@
 {% extends 'blog/base.html' %}
 
-{% block title %}  {% endblock %}
+{% block title %} Search Post  {% endblock %}
 {% block content %}
-<p style="padding-left: 20px; color: white; font-weight: 600; font-size: 1.2em;">Pesquisar Post</p>
+<p style="padding-left: 20px; color: white; font-weight: 600; font-size: 1.2em;">Search Post</p>
 <form action="{% url 'search' %}" method="POST">
     {% csrf_token %}
-    <input type="text" placeholder="Pesquisar" name="search">
+    <input type="text" placeholder="Search" name="search">
     <button type="submit"><i class="fa-sharp fa-solid fa-magnifying-glass"></i></button>
 </form>
 {% if query %}
-    <p style="padding-left: 20px; color: white; font-weight: 600; font-size: 1.2em;">Filtro: <span style="color: #19C37D;">{{query}}</span></p>
+    <p style="padding-left: 20px; color: white; font-weight: 600; font-size: 1.2em;">Filter: <span style="color: #19C37D;">{{query}}</span></p>
+    <p style="padding-left: 20px; color: white; font-weight: 600; font-size: 1.2em;">Results: <span style="color: #19C37D;">{{posts.count}}</span></p>
     {% include 'search/post.html' %}
 {% endif %}
 {% endblock %}

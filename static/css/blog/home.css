@@ -21,31 +21,29 @@ div.container {
 }
 
 header {
+    position: sticky;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    position: sticky;
     top: 0;
-    background-color: #2d2e39;
     z-index: 1;
+    background-color: #2d2e39;
 }
 
-header p {
-    color: white;
-    font-weight: bold;
-    user-select: none;
+header a.logo {
+    background-color: transparent;
 }
 
 header a {
-    border-radius: 5px;
-    user-select: none;
     text-decoration: none;
-    font-weight: bold;
+    user-select: none;
     padding: 10px;
     color: white;
-    transition: 0.5s all ease;
+    font-weight: bold;
+    border-radius: 5px;
     background-color: #DD3333;
+    transition: 0.5s all ease;
 }
 
 section {
@@ -61,28 +59,27 @@ menu {
     display: flex;
     justify-content: center;
     padding: 10px;
-    gap: 10px;
     width: 100%;
+    gap: 10px;
 }
 
 menu a {
+    text-decoration: none;
     user-select: none;
     cursor: pointer;
     padding: 10px;
-    color: white;
     font-weight: bold;
+    color: white;
     transition: 0.5s all ease;
-    text-decoration: none;
 }
 
 article {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px;
     width: 100%;
-
+    padding: 20px;
+    gap: 20px;
 }
 
 

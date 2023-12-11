@@ -5,11 +5,11 @@ div.banner {
  }
 
  div.banner img {
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
-    background-attachment: fixed;
- }
+     width: 100%;
+     object-fit: cover;
+     object-position: center;
+     background-attachment: fixed;
+    }
 
  div.perfil {
     display: flex;
@@ -20,24 +20,24 @@ div.banner {
    
 div.perfil #text-perfil {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    color: white;
-    user-select: none;
     text-align: justify;
-    position: relative;
     top: -50px;
+    position: relative;
+    user-select: none;
+    color: white;
 }
    
 div.perfil #foto-perfil img {
     position: relative;
-    top: -60px;
     width: 100px;
     height: 100px;
-    border-radius: 50%;
+    top: -60px;
     object-fit: cover;
     object-position: center;
+    border-radius: 50%;
 }
 
 div.mudar {
@@ -46,8 +46,8 @@ div.mudar {
     align-items: center;
     width: 100%;
     padding: 20px;
-    background-color: rgb(50, 53, 63);
     color: white;
+    background-color: rgb(50, 53, 63);
 }
 
 div.mudar #mudar {
@@ -58,7 +58,7 @@ div.mudar #mudar {
 }
 
 div.mudar i:hover {
+    cursor: pointer;
     color: #19C37D;
     transform: scale(1.05);
-    cursor: pointer;
 }

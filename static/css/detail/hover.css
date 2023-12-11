@@ -1,6 +1,6 @@
 header a:hover {
-    background-color: aliceblue;
     color: black;
+    background-color: aliceblue;
 }
 
 article div.post .img img:hover {

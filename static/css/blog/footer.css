@@ -26,27 +26,27 @@
 }
 
 .footer .form form h2 {
-    color: white;
-    font-weight: 600;
     user-select: none;
+    font-weight: 600;
+    color: white;
 }
 
 .footer .form form input {
     width: 100%;
     padding: 8px;
+    border: none;
     outline: none;
     color: white;
-    border: none;
     border-bottom: 1px solid white;
     background-color: transparent;
     transition: 0.5s all ease;
 }
 
 .footer .form form input#submit {
-    background-color: #19C37D;
     border: none;
     font-weight: 600;
     font-size: 1em;
+    background-color: #19C37D;
     transition: 0.3s all ease;
 }
 
@@ -60,17 +60,15 @@
     user-select: none;
 }
 
-
 .footer p {
-    color: #fff;
     font-size: 1rem;
     font-weight: 500;
-    margin: 15px 0 10px 0;
-    
+    margin: 15px 0 10px 0;    
+    color: #fff;
 }
 
 .icons i {
-    color: rgb(255, 255, 255);
     font-size: 1.5em;
+    color: rgb(255, 255, 255);
     transition: 0.3s all ease;
 }
