@@ -7,6 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.http import Http404
 from django.utils import timezone
 
 def ViewLogin(request):
@@ -146,17 +147,25 @@ def ViewComentar(request, year, month, day, slug):
     return redirect(url_anterior)
 
 def ViewTag(request, tag_slug=None):
-    tag = get_object_or_404(Tag, slug=tag_slug)
+    
+    try:
+        tag = get_object_or_404(Tag, slug=tag_slug)
+    except Http404:
+        messages.info(request, f'Nenhum Post Encontrado:(')
+        return render(request, 'blog/home.html', {'message':messages})
     posts = Post.objects.all().exclude(user=UserProfile.objects.get(user=request.user))
     posts = posts.filter(tags__name__in=[tag])
     paginator = Paginator(posts, 6)
     page = request.GET.get('page')
+
     try:
         posts = paginator.page(page)
     except PageNotAnInteger:
         posts = paginator.page(1)
     except EmptyPage:
-        posts = paginator.page(paginator.num_pages)           
+        posts = paginator.page(paginator.num_pages)
+
+
     return render(request, 'blog/home.html', {'posts':posts})
 
 def ViewEditPost(request, titulo, descricao, id):

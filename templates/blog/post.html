@@ -1,4 +1,10 @@
 
+
+{% for message in messages %}
+    <p style="color: white; font-size: 1.3em;">{{ message }}</p>
+{% endfor %}
+ 
+
 {% for post in posts %}
     <div class="post">
         <div class="img">
@@ -21,5 +27,6 @@
             <a href="{% url 'profile' post.user.user.id %}" class="perfil-name-post">{{post.user}}</a>
         </div>
     </div>
+    
 {% endfor %}
 

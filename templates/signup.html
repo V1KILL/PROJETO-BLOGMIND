@@ -12,6 +12,9 @@
     <section id="CandLogin">
         <div class="form">
             <h1>Sign Up</h1>
+            {% for message in messages %}
+                <p style="color: white; font-size: 1.3em;">{{ message }}</p>
+            {% endfor %}
             <form action="{% url 'register' %}" method="POST">
                 {% csrf_token %}
                 <input type="text" name="username" placeholder="UserName" required minlength="8">
