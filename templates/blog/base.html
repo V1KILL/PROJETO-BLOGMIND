@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,25 +11,25 @@
     <link rel="stylesheet" href="{% static 'css/blog/pagination.css' %}">
     <link rel="stylesheet" href="{% static 'css/menu.css' %}">
     <link rel="stylesheet" href="{% static 'css/blog/search.css' %}">
-    <script src="
-    https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.all.min.js
-    "></script>
-    <link href="
-    https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.min.css
-    " rel="stylesheet">
 </head>
 <body>
     <div class="container">
         {% include 'blog/header.html' %}
         
         {% block content %}
-            
+        
         {% endblock %}
-
+        
         {% include 'blog/pagination.html' %}
-
-       {% include 'menu.html' %}
+        
+        {% include 'menu.html' %}
     </div>
+    <script src="
+    https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.all.min.js
+    "></script>
+    <link href="
+    https://cdn.jsdelivr.net/npm/sweetalert2@11.10.0/dist/sweetalert2.min.css
+    " rel="stylesheet">
     <script src="../static/js/script.js"></script>
     <script src="https://kit.fontawesome.com/c99caadda1.js" crossorigin="anonymous"></script>
 </body>

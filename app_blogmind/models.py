@@ -5,10 +5,9 @@ from django.utils.text import slugify
 from taggit.managers import TaggableManager
 
 User = get_user_model()
-
 class Comment(models.Model):
-    post = models.ForeignKey('Post', on_delete=models.CASCADE, related_name='comments')
     user = models.ForeignKey('UserProfile', on_delete=models.CASCADE)
+    post = models.ForeignKey('Post', on_delete=models.CASCADE, related_name='comments')
     text = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
 
@@ -26,11 +25,11 @@ class UserProfile(models.Model):
 class Post(models.Model):
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     title = models.CharField(max_length=250)
-    image = models.ImageField(upload_to='profile_images/')
     description = models.TextField()
+    slug = models.SlugField(max_length=250, unique_for_date='created')
+    image = models.ImageField(upload_to='profile_images/')
     modified = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
-    slug = models.SlugField(max_length=250, unique_for_date='created')
     
     tags = TaggableManager()
 
@@ -56,10 +55,8 @@ class Post(models.Model):
         return reverse('comentar', args=[self.created.year, self.created.month, self.created.day, self.slug])
     
     def removepost(self):
-        return reverse('removepost', args=[self.created.year, self.created.month, self.created.day, self.slug])
-
-    def bio(self):
-        return 
+        return list([self.created.year, self.created.month, self.created.day, self.slug])
+ 
 
     class Meta:
         ordering = ['-created']

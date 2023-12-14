@@ -44,14 +44,10 @@ async function Perfil(id) {
           'accept': 'image/*',
         }
       });
-    
       if (file) {
         const formData = new FormData();
         formData.append('image', file);
-    
-        // Obtém o token CSRF do cookie
         const csrftoken = getCookie('csrftoken');
-        
         try {
           const response = await fetch('/mudarperfil', {
             method: 'POST',
@@ -60,7 +56,6 @@ async function Perfil(id) {
               'X-CSRFToken': csrftoken
             }
           });
-    
           if (response.ok) {
             Swal.fire({
               title: 'Alteração Sucedida',
@@ -91,14 +86,10 @@ async function BackGround(id) {
           'aria-label': 'Upload your profile picture'
         }
       });
-    
       if (file) {
         const formData = new FormData();
         formData.append('image', file);
-    
-        // Obtém o token CSRF do cookie
         const csrftoken = getCookie('csrftoken');
-        
         try {
           const response = await fetch('/mudarbackground', {
             method: 'POST',
@@ -129,7 +120,7 @@ async function BackGround(id) {
       }
     }
 
-async function Nome() {
+async function Name() {
       const { value: username } = await Swal.fire({
         title: 'insira seu nome',
         input: 'text',
@@ -153,20 +144,15 @@ async function Nome() {
       }
 }
 
-async function Senha(id) {
+async function PassWord(id) {
     const { value: password} = await Swal.fire({
       title: 'Nova Senha',
-      input: 'password',
-      
+      input: 'password',      
     });
-
     if (password) {
       const formData = new FormData();
       formData.append('password', password);
-
-      // Obtém o token CSRF do cookie
       const csrftoken = getCookie('csrftoken');
-      
       try {
         const response = await fetch('/mudarsenha', {
           method: 'POST',
@@ -175,13 +161,11 @@ async function Senha(id) {
             'X-CSRFToken': csrftoken
           }
         });
-
         if (response.ok) {
           Swal.fire({
             title: 'Alteração Sucedida',
             text: 'Senha Alterada Com Sucesso!',
-            icon: 'success',
-            
+            icon: 'success', 
           });
         } else {
           Swal.fire({
@@ -205,21 +189,26 @@ function Share() {
     var url = window.location.href 
     navigator.clipboard.writeText(url).then(() => {
       Swal.fire({
-        title: 'Copied Link!',
+        title: '<p style="color: white;">Copied Link!</p>',
         width: '250px',
         height: '200px',  
+        background: '#343541',
+        confirmButtonColor: '#19C37D',
       })
     })
 }
 function Info(date, att) {
       Swal.fire({
-        title: `Publicado em:<br> ${date} <br> Última Atualização: <br> ${att}`,
+        title: '<p style="color: white;">Dates<p/>',
+        html: `<p style="color:white;">Created: <br><p style="color:white;">${date}</p></p><br><p style="color:white;">Updated: <br><p style="color:white;">${att}</p></p>`,
+        background: '#343541',
+        confirmButtonColor: '#19C37D',
         width: '500px',
         height: '500px',  
       })
 }
 
-function EditarPost(id) {
+function EditPost(id) {
   Swal.fire({
     title: '<p style="color:white;">Fixar Tarefa</p>',
     html: `
@@ -245,4 +234,22 @@ function EditarPost(id) {
     allowOutsideClick: () => !Swal.isLoading()
   });
 }
-    
+
+function Delete(date) {
+  Swal.fire({
+    title: '<p style="color:white;">Delete Post</p>',
+    html: '<p style="color:white;">Are You Sure?</p>',
+    icon: 'warning',
+    background: '#343541',
+    iconColor: '#d33',
+    showCancelButton: true,
+    confirmButtonColor: '#d33',
+    cancelButtonColor: '#19C37D',
+    confirmButtonText: 'Yes, Delete it!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      window.location.href = `/removepost/${date[0]}/${date[1]}/${date[2]}/${date[3]}`;
+    }
+  })
+}
+

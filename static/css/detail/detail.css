@@ -30,9 +30,8 @@ header {
     z-index: 1;
 }
 
-header p {
-    font-weight: 700;
-    color: white;
+header a.logo {
+    background-color: transparent;
 }
 
 header a {
