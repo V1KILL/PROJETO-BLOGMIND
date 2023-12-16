@@ -151,7 +151,7 @@ def ViewTag(request, tag_slug=None):
     try:
         tag = get_object_or_404(Tag, slug=tag_slug)
     except Http404:
-        messages.info(request, f'Nenhum Post Encontrado:(')
+        messages.info(request, f'No Find Post:(')
         return render(request, 'blog/home.html', {'message':messages})
     posts = Post.objects.all().exclude(user=UserProfile.objects.get(user=request.user))
     posts = posts.filter(tags__name__in=[tag])

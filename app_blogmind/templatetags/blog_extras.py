@@ -7,4 +7,8 @@ register = template.Library()
 @register.filter
 @stringfilter
 def convert_markdown(value):
-    return markdown.markdown(value, extensions=['markdown.extensions.fenced_code', "codehilite"])
+
+    value = value.replace('\n', '<br>')
+    # Converte Markdown para HTML
+    value = markdown.markdown(value)
+    return value

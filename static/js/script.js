@@ -211,9 +211,14 @@ function Info(date, att) {
 function EditPost(id) {
   Swal.fire({
     title: '<p style="color:white;">Fixar Tarefa</p>',
-    html: `
+    input: 'textarea',
+    inputAttributes: {
+      autocapitalize: 'off',
+      placeholder: 'Digite aqui...',
+      style: 'height: 200px;',
+    },
+    html:`
       <input style="color: white; border: 2px solid white;" id="titulo" class="swal2-input" placeholder="Título" autocomplete="off">
-      <textarea style="color: white; border: 2px solid white; outline: none; background: transparent; width: 100%; margin-top: 20px; padding: 20px;" name="descricao" id="descricao" cols="30" rows="10" placeholder="Write Here" ></textarea>
     `,
     showCancelButton: true,
     confirmButtonText: 'Enviar',
@@ -222,14 +227,16 @@ function EditPost(id) {
     confirmButtonColor: '#19C37D',
     preConfirm: () => {
       const titulo = Swal.getPopup().querySelector('#titulo').value;
-      const descricao = Swal.getPopup().querySelector('#descricao').value;
-      
-      if (titulo.trim() === '' || descricao.trim() === '') {
-        Swal.showValidationMessage('O título e a descrição não podem ser vazios ou conter apenas espaços em branco');
+      const descricao = Swal.getPopup().querySelector('.swal2-textarea').value;
+
+      if (!titulo.trim() || !descricao.trim()) {
+        Swal.showValidationMessage('O título e a descrição não podem ser vazios');
         return false;
-      } else {
-        window.location.href = `/editpost/${titulo}/${descricao.toString()}/${id}`;
       }
+
+      const descricaoFormatada = descricao.replace(/\n/g, '<br>');
+
+      window.location.href = `/editpost/${encodeURIComponent(titulo)}/${encodeURIComponent(descricaoFormatada)}/${id}`;
     },
     allowOutsideClick: () => !Swal.isLoading()
   });

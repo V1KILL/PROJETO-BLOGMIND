@@ -104,3 +104,8 @@ div.add_post form label#filebutton:hover {
 div.post {
     min-width: 320px;
 }
+
+div.add_post form textarea {
+    word-wrap: break-word;
+    word-break: break-all;
+}
