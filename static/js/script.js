@@ -234,9 +234,9 @@ function EditPost(id) {
         return false;
       }
 
-      const descricaoFormatada = descricao.replace(/\n/g, '<br>');
+     
 
-      window.location.href = `/editpost/${encodeURIComponent(titulo)}/${encodeURIComponent(descricaoFormatada)}/${id}`;
+      window.location.href = `/editpost/${encodeURIComponent(titulo)}/${encodeURIComponent(descricao)}/${id}`;
     },
     allowOutsideClick: () => !Swal.isLoading()
   });

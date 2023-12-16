@@ -94,6 +94,7 @@ def ViewPost(request):
             arquivo = request.FILES['file']
             post = Post.objects.create(user=user, title=title, description=descricao, image=arquivo)
             post.tags.add(*tags)
+            
             return redirect('profile', request.user.id)
     return render(request, 'postar.html', {'user':user, 'now':timezone.now()})
 
@@ -147,7 +148,6 @@ def ViewComentar(request, year, month, day, slug):
     return redirect(url_anterior)
 
 def ViewTag(request, tag_slug=None):
-    
     try:
         tag = get_object_or_404(Tag, slug=tag_slug)
     except Http404:
