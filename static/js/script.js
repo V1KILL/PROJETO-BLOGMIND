@@ -208,23 +208,26 @@ function Info(date, att) {
       })
 }
 
-function EditPost(id) {
+function EditPost(id, title, descricao) {
+ 
   Swal.fire({
     title: '<p style="color:white;">Fixar Tarefa</p>',
     input: 'textarea',
+    inputValue: `${descricao}`,
     inputAttributes: {
       autocapitalize: 'off',
       placeholder: 'Digite aqui...',
-      style: 'height: 200px;',
+      style: 'height: 200px; border: 2px solid white; color: white;',
     },
     html:`
-      <input style="color: white; border: 2px solid white;" id="titulo" class="swal2-input" placeholder="Título" autocomplete="off">
+    <input style="color: white; border: 2px solid white;" id="titulo" class="swal2-input" placeholder="Título" autocomplete="off" value="${title}">
     `,
     showCancelButton: true,
     confirmButtonText: 'Enviar',
     showLoaderOnConfirm: true,
     background: '#343541',
     confirmButtonColor: '#19C37D',
+    cancelButtonColor: '#d33',
     preConfirm: () => {
       const titulo = Swal.getPopup().querySelector('#titulo').value;
       const descricao = Swal.getPopup().querySelector('.swal2-textarea').value;

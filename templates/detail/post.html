@@ -10,7 +10,7 @@
 </div>
 <div class="resources">
     {% if post.user.user.username == request.user.username %}
-        <a onclick="EditPost('{{post.id}}')" id="edit" class="fa-shartp fa-solid fa-pen"></a>
+        <a onclick="EditPost('{{post.id}}','{{post.title}}','{{post.description}}')" id="edit" class="fa-shartp fa-solid fa-pen"></a>
         <a onclick="Delete({{post.removepost}})" id="remove" class="fa-shartp fa-solid fa-trash"></a>
         <a onclick="Share()" id="share" class="fa-shartp fa-solid fa-share"></a>
         <a onclick="Info('{{post.formatted_date}}','{{post.formatted_modified}}')" id="info" class="fa-shartp fa-solid fa-circle-info"></a>

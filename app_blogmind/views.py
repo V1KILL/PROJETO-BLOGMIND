@@ -187,3 +187,6 @@ def ViewSearch(request):
         posts = Post.objects.filter(title__icontains=query)
         return render(request, 'search/search.html', {'posts':posts, 'query':query})
     return render(request, 'search/search.html')
+
+def error404(request, exception):
+    return render(request, 'error404.html', status=404)

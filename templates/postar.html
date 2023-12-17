@@ -22,17 +22,17 @@
                 <h3>Add a Image</h3>
 
                 <label for="image" id="filebutton"><i class=" fa-solid fa-image"></i></label>
-                <input type="file" name="file" id="image">
+                <input type="file" name="file" id="image" required>
 
                 <h3>Tags(ex: english, tecnology)</h3>
-                <input type="text" name="tags" id="tags" autocomplete="off" placeholder="english, tecnology, deploy...">
+                <input type="text" name="tags" id="tags" autocomplete="off" placeholder="english, tecnology, deploy..." required>
 
                 <h3>Title</h3>
-                <input type="text" name="title" id="title" autocomplete="off" placeholder="Write Here">
+                <input type="text" name="title" id="title" autocomplete="off" placeholder="Write Here" required>
                 
                 <h3>Description</h3>
                 <textarea name="descricao" id="descricao" cols="30" rows="10" placeholder="Basic MarkDown(Row, Title and Topics)" wrap="
-                hard"></textarea>
+                hard" required></textarea>
                 <input type="submit" value="Add Post" id="submit">
             </form>
         </div>
