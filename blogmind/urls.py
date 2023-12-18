@@ -3,11 +3,13 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls import handler404
+import debug_toolbar
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('app_blogmind.urls')),
     path('', include('perfil.urls')),
     path('', include('post.urls')),
+    path('__debug__/', include(debug_toolbar.urls)),
 ]
 
 handler404 = 'app_blogmind.views.error404'

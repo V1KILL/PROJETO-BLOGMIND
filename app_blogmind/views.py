@@ -32,15 +32,19 @@ def ViewRegister(request):
         password = request.POST['password']
         password2 = request.POST['password2']
         if password == password2:
-            if User.objects.filter(username=username).exists():
-                messages.info(request, 'Nome Existente')
+            if username.isspace():
+                messages.info(request, 'Nome Vazio')
                 return redirect('register')
             else:
-                user = User.objects.create_user(username=username, password=password)
-                user.save()
-                UserProfile.objects.create(user=user)
-                messages.info(request, 'Conta Criada com Sucesso')
-                return redirect('login')
+                if User.objects.filter(username=username).exists():
+                    messages.info(request, 'Nome Existente')
+                    return redirect('register')
+                else:
+                    user = User.objects.create_user(username=username, password=password)
+                    user.save()
+                    UserProfile.objects.create(user=user)
+                    messages.info(request, 'Conta Criada com Sucesso')
+                    return redirect('login')
         else:
             messages.info(request, 'Senhas não coincidem')
             return redirect('register')

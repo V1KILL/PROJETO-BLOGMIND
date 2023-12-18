@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'perfil',
     'post',
     'taggit',
+    'debug_toolbar',
     
 ]
 
@@ -141,3 +142,18 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 TAGGIT_CASE_INSENTIVE = True
+
+if DEBUG:
+    import debug_toolbar
+
+    MIDDLEWARE += [
+        'debug_toolbar.middleware.DebugToolbarMiddleware',
+    ]
+
+    INTERNAL_IPS = [
+        '127.0.0.1',
+    ]
+
+    DEBUG_TOOLBAR_CONFIG = {
+        'SHOW_TOOLBAR_CALLBACK': lambda request: DEBUG,
+    }
