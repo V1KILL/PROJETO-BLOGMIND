@@ -18,7 +18,7 @@ With an interface focused on languages and technologies, we invite you to contri
 
 ### Home Layout
 
-![Home Layout](/assets/homeuser.png)
+![Home Layout](./assets/homeuser.png)
 
 ### Seach Post Layout
 
@@ -26,6 +26,7 @@ With an interface focused on languages and technologies, we invite you to contri
 
 ### Detail Post Layout
 
+https://github.com/V1KILL/PROJETO-BLOGMIND/assets/105511964/8b91df16-b477-4cb5-a47d-067ac2ad14d4
 
 ### Post + Preview Layout
 
