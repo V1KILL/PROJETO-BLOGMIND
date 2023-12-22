@@ -18,11 +18,11 @@ With an interface focused on languages and technologies, we invite you to contri
 
 ### Home Layout
 
-![Home Layout](./assets/homeuser.png)
+![Home Layout](./assetsreadme/homeuser.png)
 
 ### Seach Post Layout
 
-![Search Layout](./assets/searchuser.png)
+![Search Layout](./assetsreadme/searchuser.png)
 
 ### Detail Post Layout
 
@@ -30,23 +30,23 @@ https://github.com/V1KILL/PROJETO-BLOGMIND/assets/105511964/8b91df16-b477-4cb5-a
 
 ### Post + Preview Layout
 
-![Post Layout](./assets/postuser.png)
+![Post Layout](./assetsreadme/postuser.png)
 
 ### Perfil Layout
 
-![Perfil Layout](./assets/perfiluserr.png)
+![Perfil Layout](./assetsreadme/perfiluserr.png)
 
 ### Account Layout
 
-![Account Layout](./assets/accountuser.png)
+![Account Layout](./assetsreadme/accountuser.png)
 
 ## Conceptual Model
 
-![Conceptual Model](/assets/blogmind.drawio%20(1).png)
+![Conceptual Model](/assetsreadme/blogmind.drawio%20(1).png)
 
 ## Architecture
 
-![Architecture](./assets/diagrama.drawio.png)
+![Architecture](./assetsreadme/diagrama.drawio.png)
 
 ## Features
 
