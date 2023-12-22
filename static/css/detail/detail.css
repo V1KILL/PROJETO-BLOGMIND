@@ -99,6 +99,11 @@ article div.post p {
     text-align: justify;
     color: white;
 }
+article div.post span {
+    padding: 20px;
+    text-align: justify;
+    color: white;
+}
 
 div.resources {
     display: flex;
