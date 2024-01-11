@@ -12,7 +12,7 @@ With an interface focused on languages and technologies, we invite you to contri
 
 ## Links
 
-- [Project]()
+- [Project](https://blogmind.pythonanywhere.com)
 
 ## Pages
 
