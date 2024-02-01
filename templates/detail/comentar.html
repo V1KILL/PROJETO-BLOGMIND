@@ -1,3 +1,5 @@
+{% if request.user.is_authenticated %}
+
 <div id="comentar">
     <p>Make a Comment</p>
     <form action="{{ post.get_absolute_url_comment }}" method="POST">
@@ -6,3 +8,4 @@
         <input id="submit" type="submit" value="Sent a Comment">
     </form>
 </div>
+{% endif %}

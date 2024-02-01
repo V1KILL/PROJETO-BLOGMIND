@@ -54,7 +54,15 @@ def ViewRegister(request):
 @login_required(login_url='login')
 def ViewLogout(request):
     logout(request)
-    return redirect('login')
+    return redirect('home')
+
+def ViewVisitant(request):
+    if request.user.is_authenticated:
+        logout(request)
+        return redirect('home')
+    else:
+        return redirect('home')
+    
 
 @login_required(login_url='login')
 def ViewAccount(request):
@@ -66,9 +74,8 @@ def ViewProfile(request, id):
     posts = Post.objects.filter(user=user)
     return render(request, 'profile/profile.html',{'user':user, 'posts':posts})
 
-@login_required(login_url='login')
 def ViewHome(request):
-    posts = Post.objects.all().exclude(user=UserProfile.objects.get(user=request.user))
+    posts = Post.objects.all()
     paginator = Paginator(posts, 6)
     page = request.GET.get('page')
     try:
@@ -79,7 +86,7 @@ def ViewHome(request):
         posts = paginator.page(paginator.num_pages)
     return render(request, 'blog/home.html', {'posts':posts})
 
-@login_required(login_url='login')
+
 def ViewDetail(request, year, month, day, slug):
     post = Post.objects.get(created__year=year, created__month=month, created__day=day, slug=slug)
     comments = post.comments.all()
@@ -142,6 +149,7 @@ def ViewMudarSenha(request):
     url_anterior = request.META.get('HTTP_REFERER')
     return redirect(url_anterior)
 
+@login_required(login_url='login')
 def ViewComentar(request, year, month, day, slug):
     if request.method == 'POST':
         text = request.POST['comentario']
@@ -157,7 +165,11 @@ def ViewTag(request, tag_slug=None):
     except Http404:
         messages.info(request, f'No Find Post:(')
         return render(request, 'blog/home.html', {'message':messages})
-    posts = Post.objects.all().exclude(user=UserProfile.objects.get(user=request.user))
+    if request.user.is_authenticated:
+        posts = Post.objects.all().exclude(user=UserProfile.objects.get(user=request.user))
+    else:
+        posts = Post.objects.all()
+        
     posts = posts.filter(tags__name__in=[tag])
     paginator = Paginator(posts, 6)
     page = request.GET.get('page')
@@ -169,9 +181,9 @@ def ViewTag(request, tag_slug=None):
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
 
-
     return render(request, 'blog/home.html', {'posts':posts})
 
+@login_required(login_url='login')
 def ViewEditPost(request, titulo, descricao, id):
     post = Post.objects.get(id=id)
     post.title = titulo
@@ -180,6 +192,7 @@ def ViewEditPost(request, titulo, descricao, id):
     url_anterior = request.META.get('HTTP_REFERER')
     return redirect(url_anterior)
 
+@login_required(login_url='login')
 def ViewRemovePost(request, year, month, day, slug):
     post = Post.objects.get(user=UserProfile.objects.get(user=request.user),created__year=year, created__month=month, created__day=day, slug=slug)
     post.delete()
