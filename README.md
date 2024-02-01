@@ -12,7 +12,7 @@ With an interface focused on languages and technologies, we invite you to contri
 
 ## Links
 
-- [Project]()
+- [Project](https://blogmind.pythonanywhere.com)
 
 ## Pages
 
@@ -97,9 +97,9 @@ https://github.com/V1KILL/PROJETO-BLOGMIND/assets/105511964/8b91df16-b477-4cb5-a
 - JavaScript
 
 ### Deploy
-- Back-End: Glitch
-- Front-End: Firebase
-- Database: MySQL
+- Back-End: PythonAnyWhere
+- Front-End: PythonAnyWhere
+- Database: MySQL/PythonAnyWhere
 
 ## Run Project
 
