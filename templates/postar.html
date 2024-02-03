@@ -19,7 +19,7 @@
         <div class="add_post">
             <form action="{% url 'postar' %}" enctype="multipart/form-data" method="POST">
                 {% csrf_token %}
-                <h3>Add a Image</h3>
+                <h3>Selecionar Uma Imagem</h3>
 
                 <label for="image" id="filebutton"><i class=" fa-solid fa-image"></i></label>
                 <input type="file" name="file" id="image" required>
@@ -27,13 +27,13 @@
                 <h3>Tags(ex: english, tecnology)</h3>
                 <input type="text" name="tags" id="tags" autocomplete="off" placeholder="english, tecnology, deploy..." required>
 
-                <h3>Title</h3>
-                <input type="text" name="title" id="title" autocomplete="off" placeholder="Write Here" required>
+                <h3>Título</h3>
+                <input type="text" name="title" id="title" autocomplete="off" placeholder="Escreva Aqui" required>
                 
-                <h3>Description</h3>
-                <textarea name="descricao" id="descricao" cols="30" rows="10" placeholder="Basic MarkDown(Row, Title and Topics)" wrap="
+                <h3>Descrição</h3>
+                <textarea name="descricao" id="descricao" cols="30" rows="10" placeholder="MarkDown Básico(Linha, Título and Tópicos)" wrap="
                 hard" required></textarea>
-                <input type="submit" value="Add Post" id="submit">
+                <input type="submit" value="Postar" id="submit">
             </form>
         </div>
         <div class="post">

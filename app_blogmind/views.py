@@ -62,7 +62,6 @@ def ViewVisitant(request):
         return redirect('home')
     else:
         return redirect('home')
-    
 
 @login_required(login_url='login')
 def ViewAccount(request):
@@ -85,7 +84,6 @@ def ViewHome(request):
     except EmptyPage:
         posts = paginator.page(paginator.num_pages)
     return render(request, 'blog/home.html', {'posts':posts})
-
 
 def ViewDetail(request, year, month, day, slug):
     post = Post.objects.get(created__year=year, created__month=month, created__day=day, slug=slug)

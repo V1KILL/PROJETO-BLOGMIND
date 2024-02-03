@@ -121,62 +121,87 @@ async function BackGround(id) {
     }
 
 async function Name() {
-      const { value: username } = await Swal.fire({
-        title: 'insira seu nome',
-        input: 'text',
-        inputLabel: '',
-        inputPlaceholder: '',
-        inputAttributes: {
-          autocapitalize: 'off',
-          autocorrect: 'off'
-        }
-      })
-      
-      if (username) {
-        Swal.fire({
-          title: 'Alteração Sucedida',
-          text: 'Nome alterado com sucesso',
-          icon: 'success',
-          didClose: () => {
-                window.location.href = `mudarnome/${username}`;
-              }
+    const { value: username } = await Swal.fire({
+      title: 'Insira seu nome',
+      input: 'text',
+      inputLabel: '',
+      inputPlaceholder: '',
+      inputAttributes: {
+        autocapitalize: 'off',
+        autocorrect: 'off',
+      },
+      inputValidator: (value) => {
+        return new Promise((resolve) => {
+          if (value.trim().length < 8) {
+            resolve('O nome deve ter pelo menos 8 caracteres!');
+          } else if (/\s/.test(value)) {
+            resolve('o nome não pode conter espaços em branco!');
+          } else {
+            resolve();
+          }
         });
       }
+    });
+    
+    if (username) {
+      Swal.fire({
+        title: 'Alteração Sucedida',
+        text: 'Nome alterado com sucesso',
+        icon: 'success',
+        didClose: () => {
+          window.location.href = `mudarnome/${username}`;
+        }
+      });
+    }
 }
 
 async function PassWord(id) {
-    const { value: password} = await Swal.fire({
-      title: 'Nova Senha',
-      input: 'password',      
-    });
-    if (password) {
-      const formData = new FormData();
-      formData.append('password', password);
-      const csrftoken = getCookie('csrftoken');
-      try {
-        const response = await fetch('/mudarsenha', {
-          method: 'POST',
-          body: formData,
-          headers: {
-            'X-CSRFToken': csrftoken
-          }
-        });
-        if (response.ok) {
-          Swal.fire({
-            title: 'Alteração Sucedida',
-            text: 'Senha Alterada Com Sucesso!',
-            icon: 'success', 
-          });
+  const { value: password } = await Swal.fire({
+    title: 'Nova Senha',
+    input: 'password',
+    inputValidator: (value) => {
+      return new Promise((resolve) => {
+        if (value.trim().length < 8) {
+          resolve('A senha deve ter pelo menos 8 caracteres!');
+        } else if (/\s/.test(value)) {
+          resolve('A senha não pode conter espaços em branco!');
         } else {
-          Swal.fire({
-            title: 'Alteração Falhou',
-            icon: 'error'
-          });
+          resolve();
         }
-      } catch (error) {
-        console.error('Error uploading image:', error);
+      });
+    },
+  });
+
+  if (password) {
+    const formData = new FormData();
+    formData.append('password', password.trim());
+    const csrftoken = getCookie('csrftoken');
+
+    try {
+      const response = await fetch('/mudarsenha', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'X-CSRFToken': csrftoken,
+        },
+      });
+
+      if (response.ok) {
+        Swal.fire({
+          title: 'Alteração Sucedida',
+          text: 'Senha Alterada Com Sucesso!',
+          icon: 'success',
+        });
+      } else {
+        Swal.fire({
+          title: 'Alteração Falhou',
+          icon: 'error',
+        });
       }
+    } catch (error) {
+      console.error('Error uploading image:', error);
     }
+  }
 }
 
 function getCookie(name) {

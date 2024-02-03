@@ -1,11 +1,11 @@
 {% if request.user.is_authenticated %}
 
 <div id="comentar">
-    <p>Make a Comment</p>
+    <p>Fazer Um Comentário</p>
     <form action="{{ post.get_absolute_url_comment }}" method="POST">
         {% csrf_token %}
-        <input id="comentario" name="comentario"  type="text" placeholder="Comment">
-        <input id="submit" type="submit" value="Sent a Comment">
+        <input id="comentario" name="comentario"  type="text" placeholder="Comentário" required>
+        <input id="submit" type="submit" value="Enviar o Comentário">
     </form>
 </div>
 {% endif %}

@@ -1,6 +1,6 @@
 {% if request.user.is_authenticated %}
     <div class="comentario">
-        <p id="comentarios">Comments({{comments.count}})</p>
+        <p id="comentarios">Comentários({{comments.count}})</p>
         {% for comment in comments %}
         <div id="comentario">
             <div id="perfil">
@@ -15,7 +15,7 @@
     </div>
 {% else %}
     <div class="comentario" style="margin-bottom: 100px;">
-        <p id="comentarios">Comments({{comments.count}})</p>
+        <p id="comentarios">Comentários({{comments.count}})</p>
         {% for comment in comments %}
         <div id="comentario">
             <div id="perfil">
@@ -27,5 +27,6 @@
             </div>
         </div>
         {% endfor %}
+        <p style="color: #19C37D; font-size: 1em;"><i class="fa-solid fa-circle-exclamation" style="padding: 5px;"></i>Crie Uma Conta Para Comentar Neste Post</p>
     </div>
 {% endif %}

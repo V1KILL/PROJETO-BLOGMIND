@@ -11,20 +11,20 @@
 <body>
     <section id="CandLogin">
         <div class="form">
-            <h1>Sign In</h1>
+            <h1>Logar</h1>
             {% for message in messages %}
                 <p style="color: white; font-size: 1.3em;">{{ message }}</p>
             {% endfor %}
             <form action="{% url 'login' %}" method="POST">
                 {% csrf_token %}
-                <input type="text" name="username" placeholder="UserName" required minlength="8">
-                <input type="password" name="password" id="" placeholder="PassWord" required minlength="8">
+                <input type="text" name="username" placeholder="Nome" required minlength="8">
+                <input type="password" name="password" id="" placeholder="Senha" required minlength="8">
                 
                 <h3 class="messages"></h3>
                 
-                <a href="register">I Don't Have an Account</a>
+                <a href="register">Eu Não Tenho Uma Conta</a>
                 <a href="visitant">Logar Como Visitante</a>
-                <input id="submit" type="submit" value="Sign in">
+                <input id="submit" type="submit" value="Logar">
             </form>
         </div>
     </section>
