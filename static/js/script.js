@@ -37,138 +37,131 @@ input.addEventListener('change', function(e) {
 })
 
 async function Perfil(id) {
-      const { value: file } = await Swal.fire({
-        title: 'Selecionar Imagem',
-        input: 'file',
-        inputAttributes: {
-          'accept': 'image/*',
+  const { value: file } = await Swal.fire({
+    title: 'Selecionar Imagem',
+    input: 'file',
+    inputAttributes: {
+      'accept': 'image/*',
+    }
+  });
+
+  if (file) {
+    const formData = new FormData();
+    formData.append('image', file);
+
+    try {
+      const csrftoken = getCookie('csrftoken');
+      const response = await fetch('/mudarperfil', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'X-CSRFToken': csrftoken
         }
       });
-      if (file) {
-        const formData = new FormData();
-        formData.append('image', file);
-        const csrftoken = getCookie('csrftoken');
-        try {
-          const response = await fetch('/mudarperfil', {
-            method: 'POST',
-            body: formData,
-            headers: {
-              'X-CSRFToken': csrftoken
-            }
-          });
+
+      const successOptions = {
+        title: response.ok ? 'Alteração Sucedida' : 'Alteração Falhou',
+        text: response.ok ? 'Imagem Alterada Com Sucesso!' : '',
+        icon: response.ok ? 'success' : 'error',
+        didClose: () => {
           if (response.ok) {
-            Swal.fire({
-              title: 'Alteração Sucedida',
-              text: 'Imagem Alterada Com Sucesso!',
-              icon: 'success',
-              didClose: () => {
-                    window.location.href = `profile/${id}`;
-                  }
-            });
-          } else {
-            Swal.fire({
-              title: 'Alteração Falhou',
-              icon: 'error',
-            });
+            window.location.href = `profile/${id}`;
           }
-        } catch (error) {
-          console.error('Error uploading image:', error);
         }
-      }
+      };
+
+      Swal.fire(successOptions);
+
+    } catch (error) {
+      console.error('Erro', error);
     }
+  }
+}
   
 async function BackGround(id) {
-      const { value: file } = await Swal.fire({
-        title: 'Selecionar Imagem',
-        input: 'file',
-        inputAttributes: {
-          'accept': 'image/*',
-          'aria-label': 'Upload your profile picture'
+  const { value: file } = await Swal.fire({
+    title: 'Selecionar Imagem',
+    input: 'file',
+    inputAttributes: {
+      'accept': 'image/*',
+      'aria-label': 'Upload your profile picture'
+    }
+  });
+
+  if (file) {
+    const formData = new FormData();
+    formData.append('image', file);
+
+    try {
+      const csrftoken = getCookie('csrftoken');
+      const response = await fetch('/mudarbackground', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'X-CSRFToken': csrftoken
         }
       });
-      if (file) {
-        const formData = new FormData();
-        formData.append('image', file);
-        const csrftoken = getCookie('csrftoken');
-        try {
-          const response = await fetch('/mudarbackground', {
-            method: 'POST',
-            body: formData,
-            headers: {
-              'X-CSRFToken': csrftoken
-            }
-          });
-    
+
+      const successOptions = {
+        title: response.ok ? 'Alteração Sucedida' : 'Alteração Falhou',
+        text: response.ok ? 'Background Alterado com Sucesso' : '',
+        icon: response.ok ? 'success' : 'error',
+        didClose: () => {
           if (response.ok) {
-            Swal.fire({
-              title: 'Alteração Sucedida',
-              text: 'Background Alterado com Sucesso',
-              icon: 'success',
-              didClose: () => {
-                    window.location.href = `profile/${id}`;
-                  }
-            });
-          } else {
-            Swal.fire({
-              title: 'Alteração Falhou',
-              icon: 'error'
-            });
+            window.location.href = `profile/${id}`;
           }
-        } catch (error) {
-          console.error('Error uploading image:', error);
         }
-      }
+      };
+
+      Swal.fire(successOptions);
+
+    } catch (error) {
+      console.error('Erro', error);
     }
+  }
+}
 
 async function Name() {
-    const { value: username } = await Swal.fire({
-      title: 'Insira seu nome',
-      input: 'text',
-      inputLabel: '',
-      inputPlaceholder: '',
-      inputAttributes: {
-        autocapitalize: 'off',
-        autocorrect: 'off',
-      },
-      inputValidator: (value) => {
-        return new Promise((resolve) => {
-          if (value.trim().length < 8) {
-            resolve('O nome deve ter pelo menos 8 caracteres!');
-          } else if (/\s/.test(value)) {
-            resolve('o nome não pode conter espaços em branco!');
-          } else {
-            resolve();
-          }
-        });
+  const { value: username } = await Swal.fire({
+    title: 'Mudar Nome',
+    input: 'text',
+    inputAttributes: {
+      autocapitalize: 'off',
+      autocorrect: 'off',
+    },
+    inputValidator: (value) => {
+      if (value.trim().length < 8) {
+        return 'O Nome Deve Ter Pelo Menos 8 Caracteres!';
+      } else if (/\s/.test(value)) {
+        return 'O Nome Não Pode Conter Espaços Em Branco!';
+      }
+      return null;
+    }
+  });
+
+  if (username) {
+    Swal.fire({
+      title: 'Alteração Sucedida',
+      text: 'Nome alterado Com Sucesso',
+      icon: 'success',
+      didClose: () => {
+        window.location.href = `mudarnome/${username}`;
       }
     });
-    
-    if (username) {
-      Swal.fire({
-        title: 'Alteração Sucedida',
-        text: 'Nome alterado com sucesso',
-        icon: 'success',
-        didClose: () => {
-          window.location.href = `mudarnome/${username}`;
-        }
-      });
-    }
+  }
 }
 
 async function PassWord(id) {
   const { value: password } = await Swal.fire({
-    title: 'Nova Senha',
+    title: 'Mudar Senha',
     input: 'password',
     inputValidator: (value) => {
-      return new Promise((resolve) => {
-        if (value.trim().length < 8) {
-          resolve('A senha deve ter pelo menos 8 caracteres!');
-        } else if (/\s/.test(value)) {
-          resolve('A senha não pode conter espaços em branco!');
-        } else {
-          resolve();
-        }
-      });
+      if (value.trim().length < 8) {
+        return 'A Senha Deve Ter Pelo Menos 8 Caracteres!';
+      } else if (/\s/.test(value)) {
+        return 'A Senha Não Pode Conter Espaços Em Branco!';
+      }
+      return null;
     },
   });
 
@@ -186,20 +179,16 @@ async function PassWord(id) {
         },
       });
 
-      if (response.ok) {
-        Swal.fire({
-          title: 'Alteração Sucedida',
-          text: 'Senha Alterada Com Sucesso!',
-          icon: 'success',
-        });
-      } else {
-        Swal.fire({
-          title: 'Alteração Falhou',
-          icon: 'error',
-        });
-      }
+      const successOptions = {
+        title: response.ok ? 'Alteração Sucedida' : 'Alteração Falhou',
+        text: response.ok ? 'Senha Alterada Com Sucesso!' : '',
+        icon: response.ok ? 'success' : 'error',
+      };
+
+      Swal.fire(successOptions);
+
     } catch (error) {
-      console.error('Error uploading image:', error);
+      console.error('Erro', error);
     }
   }
 }
@@ -211,41 +200,45 @@ function getCookie(name) {
 }
 
 function Share() {
-    var url = window.location.href 
-    navigator.clipboard.writeText(url).then(() => {
-      Swal.fire({
-        title: '<p style="color: white;">Copied Link!</p>',
-        width: '250px',
-        height: '200px',  
-        background: '#343541',
-        confirmButtonColor: '#19C37D',
-      })
-    })
+  const url = window.location.href;
+
+  navigator.clipboard.writeText(url).then(() => {
+    Swal.fire({
+      title: '<p style="color: white;">Link Copiado!</p>',
+      width: '250px',
+      height: '200px',
+      background: '#343541',
+      confirmButtonColor: '#19C37D',
+    });
+  });
 }
+
 function Info(date, att) {
-      Swal.fire({
-        title: '<p style="color: white;">Dates<p/>',
-        html: `<p style="color:white;">Created: <br><p style="color:white;">${date}</p></p><br><p style="color:white;">Updated: <br><p style="color:white;">${att}</p></p>`,
-        background: '#343541',
-        confirmButtonColor: '#19C37D',
-        width: '500px',
-        height: '500px',  
-      })
+  Swal.fire({
+    title: '<p style="color: white;">Detalhes</p>',
+    html: `
+      <p style="color:white;">Criado Em: <br><span style="color:white;">${date}</span></p><br>
+      <p style="color:white;">Última Atualização: <br><span style="color:white;">${att}</span></p>
+    `,
+    background: '#343541',
+    confirmButtonColor: '#19C37D',
+    width: '500px',
+    height: '500px',
+  });
 }
 
 function EditPost(id, title, descricao) {
- 
   Swal.fire({
-    title: '<p style="color:white;">Fixar Tarefa</p>',
+    title: '<p style="color:white;">Editar Post</p>',
     input: 'textarea',
-    inputValue: `${descricao}`,
+    inputValue: descricao,
     inputAttributes: {
       autocapitalize: 'off',
       placeholder: 'Digite aqui...',
       style: 'height: 200px; border: 2px solid white; color: white;',
     },
-    html:`
-    <input style="color: white; border: 2px solid white;" id="titulo" class="swal2-input" placeholder="Título" autocomplete="off" value="${title}">
+    html: `
+      <input style="color: white; border: 2px solid white;" id="titulo" class="swal2-input" placeholder="Título" autocomplete="off" value="${title}">
     `,
     showCancelButton: true,
     confirmButtonText: 'Enviar',
@@ -258,33 +251,37 @@ function EditPost(id, title, descricao) {
       const descricao = Swal.getPopup().querySelector('.swal2-textarea').value;
 
       if (!titulo.trim() || !descricao.trim()) {
-        Swal.showValidationMessage('O título e a descrição não podem ser vazios');
+        Swal.showValidationMessage('O Título e a Descrição Não Podem Ser Vazios');
         return false;
       }
 
-     
-
-      window.location.href = `/editpost/${encodeURIComponent(titulo)}/${encodeURIComponent(descricao)}/${id}`;
+      const encodedTitulo = encodeURIComponent(titulo);
+      const encodedDescricao = encodeURIComponent(descricao);
+      window.location.href = `/editpost/${encodedTitulo}/${encodedDescricao}/${id}`;
     },
-    allowOutsideClick: () => !Swal.isLoading()
+    allowOutsideClick: () => !Swal.isLoading(),
   });
 }
 
+
 function Delete(date) {
   Swal.fire({
-    title: '<p style="color:white;">Delete Post</p>',
-    html: '<p style="color:white;">Are You Sure?</p>',
+    title: '<p style="color:white;">Deletar Post</p>',
+    html: '<p style="color:white;">Você Tem Certeza?</p>',
     icon: 'warning',
     background: '#343541',
     iconColor: '#d33',
     showCancelButton: true,
     confirmButtonColor: '#d33',
     cancelButtonColor: '#19C37D',
-    confirmButtonText: 'Yes, Delete it!'
+    confirmButtonText: 'Sim, Deletar Post!'
   }).then((result) => {
     if (result.isConfirmed) {
-      window.location.href = `/removepost/${date[0]}/${date[1]}/${date[2]}/${date[3]}`;
+      const [year, month, day, postId] = date;
+      const encodedPostId = encodeURIComponent(postId);
+      window.location.href = `/removepost/${year}/${month}/${day}/${encodedPostId}`;
     }
-  })
+  });
 }
+
 
