@@ -1,3 +1,21 @@
+  
+document.addEventListener('DOMContentLoaded', function() {
+  var hasShownAlert = Cookies.get('hasShownAlert');
+  
+  if (!hasShownAlert) {
+    Swal.fire({
+      icon: 'warning',
+      iconColor:'#d33',
+      title: '<p style="color: white;">Atenção</p>',
+      html: '<p style="color: white;">Você está logado como visitante, consequentemente não terá acesso a todas as funcionalidades. Faça login em uma conta para uma melhor experiência.</p>',
+      background: '#343541',
+      confirmButtonColor: '#19C37D',
+    });
+    Cookies.set('hasShownAlert', true, { expires: 1 / 24 });
+  }
+});
+
+
 var header = document.getElementById("header");
 
 window.onscroll = function() {
