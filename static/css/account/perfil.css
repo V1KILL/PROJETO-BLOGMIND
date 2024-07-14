@@ -57,6 +57,11 @@ div.mudar #mudar {
     gap: 20px;
 }
 
+div.mudar:nth-child(4) {
+    /* Estilos para a quarta div */
+    margin-bottom: 40px;
+}
+
 div.mudar i:hover {
     cursor: pointer;
     color: #19C37D;

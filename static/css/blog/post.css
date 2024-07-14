@@ -4,8 +4,8 @@ div.post {
     display: flex;
     flex-direction: column;
     word-wrap: break-word;
-    width: 500px;
-    min-width: 310px;
+    width: 100%;
+    max-width: 500px;
     padding: 15px;
     gap: 10px;
     overflow: hidden;  
